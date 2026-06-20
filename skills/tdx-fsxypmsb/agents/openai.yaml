@@ -1,0 +1,8 @@
+interface:
+  display_name: 反身性与泡沫识别
+  short_description: 识别热门板块和个股的预期泡沫与自我强化循环，判断基本面驱动还是预期泡沫扩张。
+  default_description: 使用反身性与泡沫识别技能，判断热门板块或个股是否已经进入"预期自我强化"的泡沫阶段，分析市场叙事与价格的自我强化机制，识别潜在风险和破裂触发因素。
+  default_prompt: 使用 $反身性与泡沫识别技能，分析用户关注的热门板块或个股，判断当前上涨是基本面驱动还是预期泡沫扩张，识别反身性循环机制，评估泡沫化程度，并给出交易应对策略。
+
+policy:
+  allow_implicit_invocation: true

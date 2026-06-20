@@ -1,0 +1,7 @@
+interface:
+  display_name: "TDX Board Valuation"
+  short_description: "使用 tdx_api_data 查询板块估值对比和历史估值走势。"
+  default_prompt: "使用 $tdx-board-valuation，通过 tdx_api_data 查询板块估值，并根据用户问题选择 queryType 后总结重点估值结果。"
+
+policy:
+  allow_implicit_invocation: true

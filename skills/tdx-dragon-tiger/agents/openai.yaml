@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Dragon Tiger
+  short_description: 使用 tdx_api_data 查询龙虎榜可用日期和指定日期明细。
+  default_prompt: 使用 $tdx-dragon-tiger，通过 tdx_api_data 查询龙虎榜数据，并根据需求选择可用日期或指定日期明细后总结重点席位和净买卖情况。
+
+policy:
+  allow_implicit_invocation: true

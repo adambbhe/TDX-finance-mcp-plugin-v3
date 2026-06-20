@@ -1,0 +1,7 @@
+﻿interface:
+  display_name: "TDX Limit-Up Dragon Cycle"
+  short_description: "分析涨停结构、连板梯队、情绪周期和龙头博弈。"
+  default_prompt: "使用 $tdx-limit-up-dragon-cycle，结合当前项目已有 TDX 工具分析涨停结构、情绪周期、核心龙头与明日博弈点。"
+
+policy:
+  allow_implicit_invocation: true

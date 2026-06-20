@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Stock Events
+  short_description: 使用 tdx_api_data 查询股票事件，支持股东增减持、大宗交易、十大股东持股明细。
+  default_prompt: 使用 $tdx-stock-events，通过 tdx_api_data 查询股票事件，并根据需求选择股东增减持、大宗交易或十大股东持股明细后总结重点。
+
+policy:
+  allow_implicit_invocation: true

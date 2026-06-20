@@ -1,0 +1,756 @@
+{
+  "generatedAt": "2026-06-20T07:31:27.483Z",
+  "token": "TDX-971f51…",
+  "testCode": "000001",
+  "tools": {
+    "tdx_quotes": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 206,
+      "sample": "【平安银行】000001 | 现价: 10.52 (-2.41%) | 成交量: 143万手 | 换手率: 0.735299528% 详细信息: { \"HQInfo\": { \"HQDate\": \"20260618\", \"HQTime\": \"153306\", \"ItemNum\": \"4642\", \"Close\": 10."
+    },
+    "tdx_kline": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 95,
+      "sample": "【平安银行】000001 | 现价: 10.52 (-2.41%) | 换手率: 0.735299528% | K线数量: 5根 | 区间涨跌: +6.84% | 区间最高: 11.25, 最低: 10.52 详细K线数据: { \"Code\": \"000001\", \"Period\": 4, \"ListHead\": { "
+    },
+    "tdx_lookup_stock": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 264,
+      "sample": "找到 10 个与\"平安银行\"相关的A股: 1. 【000001】平安银行 类型: A股代码 | setcode: 0 别名: payh, 深发展A, S深发展A, 平安保险, 中国平安... 2. 【601318】中国平安 类型: A股代码 | setcode: 1 别名: zgpa, 平安保险, 平安股份, 平安集团"
+    },
+    "tdx_screener": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 211,
+      "sample": "## 查询\"涨停\"在A股市场中共找到 101 条记录，当前第 1 页，显示 5 条 | 序号 | 代码 | 名称 | 现价 | 涨跌幅 | |------|------|------|------|--------| | 1 | 002167 | 东方锆业 | 16.13 | 10.03% | | 2 | 002281"
+    },
+    "tdx_indicator_select": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 1186,
+      "sample": "[ { \"market\": 0, \"code\": \"000001\", \"sec_name\": \"平安银行\", \"市盈率(PE,LYR)(交易日:20260618)\": \"4.7886\" } ]"
+    },
+    "tdx_api_data": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 91,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=88ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", \""
+    }
+  },
+  "f10": {
+    "tdxf10_gg_comreq|jglhb": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 80,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code | entry=TdxSharePCCW.tdxf10_gg_comreq | status=200 | elapsed=80ms 转换摘要: 000001 dragon-tiger available dates - 0 rows, 1 "
+    },
+    "tdxf10_gg_fhrz_fh|fh": {
+      "ok": false,
+      "status": "ERR",
+      "note": "未注册(E|-7202)",
+      "ms": 83,
+      "sample": "tdx_api_data 请求失败 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_fhrz_fh | HTTP 503 Service unavailable { \"ok\": false, \"toolName\": \"tdx_api_data\", \""
+    },
+    "tdxf10_gg_fhrz|fhlszs_gxl": {
+      "ok": false,
+      "status": "ERR",
+      "note": "需登录(401)",
+      "ms": 210,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=199ms 转换摘要: 最新日期 2026-06-18 | 历史记录 2428 条 { \"ok\": true, \"tool"
+    },
+    "tdxf10_gg_fhrz|fhpm_pxrzb": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 86,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=85ms 转换摘要: 排名记录 10 条 { \"ok\": true, \"toolName\": \"tdx_api_data\""
+    },
+    "tdxf10_gg_fhrz|pxmz": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 92,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=92ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode\": \"code-"
+    },
+    "tdxf10_gg_gbjg|gbjg": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 95,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=94ms 转换摘要: 000001 股本构成 - 最新变动日期 2026-06-20，18 条记录 { \"ok\": tru"
+    },
+    "tdxf10_gg_gbjg|xslt": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 85,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=84ms 转换摘要: 000001 限售解禁 - 最近解禁日 2018-05-21，参考日期 2026-06-12，1 条"
+    },
+    "tdxf10_gg_gdyjcgmx|gdjc": {
+      "ok": false,
+      "status": "ERR",
+      "note": "参数错误(-1005)",
+      "ms": 126,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=126ms { \"ok\": true, \"toolName\": \"tdx_api_dat"
+    },
+    "tdxf10_gg_gdyjcgmx|gdjcmxrq": {
+      "ok": false,
+      "status": "ERR",
+      "note": "参数错误(-1005)",
+      "ms": 93,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=93ms { \"ok\": true, \"toolName\": \"tdx_api_data"
+    },
+    "tdxf10_gg_gdyj|cgbd": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 89,
+      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=88ms 转换摘要: 000001 shareholder change { \"ok\": true, \"too"
+    },
+    "tdxf10_gg_gdyj|gdrs": {
+      "ok": false,
+      "status": "ERR",
+      "note": "需登录(401)",
+      "ms": 97,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=96ms 转换摘要: 000001 股东人数与股价比较 - 截止 2026-03-3"
+    },
+    "tdxf10_gg_gdyj|jgcg": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 90,
+      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=89ms 转换摘要: 000001 机构持股汇总 - 最新报告期 2026-03-31，机构家数 95，持仓比"
+    },
+    "tdxf10_gg_gdyj|jgcgqk": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 78,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=77ms 转换摘要: 000001 机构持股整体 - 1 类机构 { \"ok\": t"
+    },
+    "tdxf10_gg_gdyj|ltgd": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 169,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=164ms 转换摘要: 000001 十大流通股东 - 最新变动日 2025-12-"
+    },
+    "tdxf10_gg_gsgk|0": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 95,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=94ms 转换摘要: 平安银行股份有限公司 (000001) basic info - 3 business "
+    },
+    "tdxf10_gg_gsgk|20": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 99,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=98ms 转换摘要: 000001 executives - 20 people, 2 category su"
+    },
+    "tdxf10_gg_gsgk|4": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 88,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=88ms 转换摘要: 000001 员工构成 - 共 14 条记录 { \"ok\": true, \"toolNa"
+    },
+    "tdxf10_gg_gsgk|5": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 103,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=102ms 转换摘要: 000001 员工效益 - 共 5 个年度 { \"ok\": true, \"toolNa"
+    },
+    "tdxf10_gg_iyds|yxsbxx": {
+      "ok": false,
+      "status": "ERR",
+      "note": "未注册(E|-7202)",
+      "ms": 116,
+      "sample": "tdx_api_data 请求失败 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_iyds | HTTP 503 Service unavailable { \"ok\": false, \"toolName\": \"tdx_api_data\", \"mod"
+    },
+    "tdxf10_gg_jyds|dzjy": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 90,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=89ms 转换摘要: 000001 block trade | latest 2026-01-07 | 12 "
+    },
+    "tdxf10_gg_jyds|rzrq": {
+      "ok": false,
+      "status": "ERR",
+      "note": "需登录(401)",
+      "ms": 89,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=88ms 转换摘要: 000001 margin trading - 28 rows, 3 result se"
+    },
+    "tdxf10_gg_jyds|zjlx": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 95,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=94ms 转换摘要: 000001 capital flow - 49 rows, 2 result sets"
+    },
+    "tdxf10_gg_jyds|ztfx": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 87,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=87ms 转换摘要: 000001 limit-up analysis - 1 rows, 1 result "
+    },
+    "tdxf10_gg_rdtc|sjcd": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 93,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=92ms 转换摘要: 事件 5 条 | 首个事件 商业银行75%存贷比取消 { \"ok\": true, \"toolName"
+    },
+    "tdxf10_gg_rdtc|zttzbkz": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 203,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=203ms 转换摘要: 板块 12 条 | 首个板块 跨境支付CIPS { \"ok\": true, \"toolName\":"
+    },
+    "tdxf10_gg_rdtc|zttzztk": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 91,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=91ms 转换摘要: 题材 8 条 | 首个题材 平安保险持股 { \"ok\": true, \"toolName\": \"td"
+    },
+    "tdxf10_gg_sj|fh_sj": {
+      "ok": false,
+      "status": "ERR",
+      "note": "参数错误(-1005)",
+      "ms": 94,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=93ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode"
+    },
+    "tdxf10_gg_sj|qhgp": {
+      "ok": false,
+      "status": "ERR",
+      "note": "参数错误(-1005)",
+      "ms": 97,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=97ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode"
+    },
+    "tdxf10_gg_ybpj|yjyg": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 0,
+      "sample": "{ \"ok\": false, \"toolName\": \"tdx_api_data\", \"mode\": \"auto\", \"error\": { \"kind\": \"validation\", \"message\": \"entry TdxSharePCCW.tdxf10_gg_ybpj 未命中自动推导规则；可用判别参数：fixed"
+    },
+    "tdxf10_gg_ybpj|yzyq": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 90,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=90ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", \""
+    },
+    "tdxf10_gg_zlcc|bszj": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 95,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-date-three-extras | entry=TdxSharePCCW.tdxf10_gg_zlcc | status=200 | elapsed=94ms 转换摘要: 000001 北向资金 - 日期 2026-03-31，持股数量"
+    },
+    "tdxf10_gg_zxts|gsgy": {
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 85,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_zxts | status=200 | elapsed=84ms 转换摘要: 平安银行 (000001) 公司概要 - 2026-03-31 - 行业 银行 / 全国"
+    }
+  },
+  "skills": {
+    "tdx-agzxsb": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_quotes",
+        "tdx_screener"
+      ],
+      "entries": []
+    },
+    "tdx-bkbj": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_kline"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-board-cpbd": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-board-valuation": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-bxzjxw": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_zlcc"
+      ]
+    },
+    "tdx-chltz": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_jyfx"
+      ]
+    },
+    "tdx-company-info": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_zxts",
+        "tdxf10_gg_gsgk"
+      ]
+    },
+    "tdx-czzdxfxjs": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_indicator_select"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-dividend-financing": {
+      "verdict": "🟡部分",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_fhrz",
+        "tdxf10_gg_fhrz_fh",
+        "tdxf10_gg_sj",
+        "tdxf10_gg_gdyjcgmx"
+      ]
+    },
+    "tdx-dragon-tiger": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_comreq",
+        "tdxf10_gg_jyds"
+      ]
+    },
+    "tdx-earnings-warning": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-event-driven-short-term-catalyst": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-fhgdhb": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-financials": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_gsgk"
+      ]
+    },
+    "tdx-fsxypmsb": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-ggtzljyj": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-ggwdzk": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_zxts",
+        "tdxf10_gg_jyds"
+      ]
+    },
+    "tdx-ggycbfx": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-gszddf": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-hot-topic": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-industry-chain": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": []
+    },
+    "tdx-industry-chain-mapping": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_indicator_select"
+      ],
+      "entries": []
+    },
+    "tdx-jgccgdfx": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_indicator_select"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_comreq",
+        "tdxf10_gg_gdyj"
+      ]
+    },
+    "tdx-jjzcyjd": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-lhbxwfg": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_lookup_stock",
+        "tdx_screener",
+        "tdx_indicator_select"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_comreq",
+        "tdxf10_gg_jyds"
+      ]
+    },
+    "tdx-main-position": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_comreq",
+        "tdxf10_gg_gdyj",
+        "tdxf10_gg_gdyj_jgcgmx",
+        "tdxf10_gg_zlcc"
+      ]
+    },
+    "tdx-mrtyjb": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-position-decision": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_screener"
+      ],
+      "entries": []
+    },
+    "tdx-quant": {
+      "verdict": "未知(无可测依赖)",
+      "tools": [],
+      "entries": []
+    },
+    "tdx-report-rating": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-share-capital": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_gbjg"
+      ]
+    },
+    "tdx-shareholder-research": {
+      "verdict": "🟡部分",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_gdyj"
+      ]
+    },
+    "tdx-stock-events": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_gdyj",
+        "tdxf10_gg_jyds",
+        "tdxf10_gg_gdyj_jgcgmx"
+      ]
+    },
+    "tdx-tczqcxx": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_lookup_stock",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_jyds"
+      ]
+    },
+    "tdx-trade-plan": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_indicator_select"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-trading-info": {
+      "verdict": "🟡部分",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_iyds",
+        "tdxf10_gg_jyds"
+      ]
+    },
+    "tdx-valuation-pricing-framework": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_indicator_select"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-wxd-a": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-wxd-bk": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-wxd-etf": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc"
+      ]
+    },
+    "tdx-wxd-jj": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-yjygby": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-zjftjytl": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    },
+    "tdx-ztltby": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_kline",
+        "tdx_lookup_stock",
+        "tdx_screener"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj",
+        "tdxf10_gg_jyds",
+        "tdxf10_gg_comreq"
+      ]
+    },
+    "tdx-zzjdysyfx": {
+      "verdict": "✅可用",
+      "tools": [
+        "tdx_api_data",
+        "tdx_quotes",
+        "tdx_lookup_stock"
+      ],
+      "entries": [
+        "tdxf10_gg_rdtc",
+        "tdxf10_gg_ybpj"
+      ]
+    }
+  },
+  "summary": {
+    "toolsOk": 6,
+    "toolsTotal": 6,
+    "f10Ok": 23,
+    "f10Total": 32,
+    "skillsAvail": 41,
+    "skillsPartial": 3,
+    "skillsDown": 0
+  }
+}

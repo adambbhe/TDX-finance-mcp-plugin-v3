@@ -1,0 +1,4 @@
+interface:
+  display_name: "TDX Dividend Financing"
+  short_description: "使用 tdx_api_data 查询分红融资、分红历史和分红排名。"
+  default_prompt: "使用 $tdx-dividend-financing，通过 tdx_api_data 查询个股分红融资、分红历史走势或分红排名，并按需求选择对应 fixedTag。"

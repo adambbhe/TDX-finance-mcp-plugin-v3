@@ -1,0 +1,79 @@
+{
+  "name": "@tdx/tdx-finance-mcp",
+  "version": "3.0.1",
+  "description": "TDX Finance MCP Plugin v3 - 通达信金融数据服务 MCP 插件，提供 A 股行情、K线、F10 基本面、智能选股等 6 个核心工具，内置 45 个投资分析技能",
+  "keywords": [
+    "openclaw",
+    "mcp",
+    "plugin",
+    "finance",
+    "tdx",
+    "stock",
+    "a-share",
+    "chinese-stock",
+    "financial-data"
+  ],
+  "author": "TDX Team",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3/issues"
+  },
+  "homepage": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3#readme",
+  "files": [
+    "index.js",
+    "openclaw.plugin.json",
+    "README.md",
+    "SKILLS.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "config.example.json",
+    "install.sh",
+    "install.ps1",
+    "skills/"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "0.34.48"
+  },
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ],
+    "install": {
+      "npmSpec": "@tdx/tdx-finance-mcp",
+      "localPath": "extensions/tdx-finance-mcp",
+      "defaultChoice": "npm"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "tdxApiToken": {
+        "type": "string",
+        "title": "TDX API Token",
+        "description": "通达信 API 密钥。插件会作为 HTTP header token:<tdx-api-token> 发送给所有工具请求。未设置时回退到环境变量 TDX_API_KEY。"
+      },
+      "apiEndpoint": {
+        "type": "string",
+        "title": "API Endpoint",
+        "description": "自定义 API 端点地址（可选）。默认使用官方端点：http://tdxhub.icfqs.com:7615/TQLEX"
+      }
+    },
+    "required": [
+      "tdxApiToken"
+    ]
+  }
+}

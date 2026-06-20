@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Main Position
+  short_description: 使用 tdx_api_data 查询机构持股、北向资金和持仓对比数据。
+  default_prompt: 使用 $tdx-main-position，通过 tdx_api_data 查询主力持仓与机构持股数据，并根据需求选择机构持股汇总、日期、整体分布、明细、北向资金或持仓与股价对比后总结重点。
+
+policy:
+  allow_implicit_invocation: true

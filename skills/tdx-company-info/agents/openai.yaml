@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Company Info
+  short_description: 使用 tdx_api_data 查询公司信息，支持概要、基本情况、发行与交易、董监高、参股控股公司。
+  default_prompt: 使用 $tdx-company-info，通过 tdx_api_data 查询公司信息，并根据需求选择概要、基本情况、发行与交易、董监高或参股控股公司后总结重点。
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Hot Topic
+  short_description: 使用 tdx_api_data 查询个股热点题材，支持板块族谱、主题库、事件驱动、信息面概览。
+  default_prompt: 使用 $tdx-hot-topic，通过 tdx_api_data 查询个股热点题材，并根据需求选择板块族谱、主题库、事件驱动或信息面概览后总结重点。
+
+policy:
+  allow_implicit_invocation: true

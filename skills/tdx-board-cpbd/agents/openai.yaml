@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Board CPBD
+  short_description: 使用 tdx_api_data 查询板块操盘必读，支持基础资料、板块详解、阶段涨幅、市场统计。
+  default_prompt: 使用 $tdx-board-cpbd，通过 tdx_api_data 查询板块操盘必读，并根据需求选择基础资料、板块详解、阶段涨幅或市场统计后总结重点。
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Trading Info
+  short_description: 使用 tdx_api_data 查询交易信息，支持融资融券、资金流、涨跌停分析等。
+  default_prompt: 使用 $tdx-trading-info，通过 tdx_api_data 查询交易信息，并根据需求选择大宗交易意向申报、融资融券、转融券、资金流向、涨停分析或跌停分析后总结重点。
+
+policy:
+  allow_implicit_invocation: true

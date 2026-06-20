@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Industry Chain
+  short_description: 使用 tdx_api_data 查询行业产业链图谱和行业重要事件。
+  default_prompt: 使用 $tdx-industry-chain，通过 tdx_api_data 查询行业产业链或行业重要事件，并根据需求总结图谱节点关系或最新行业事件重点。
+
+policy:
+  allow_implicit_invocation: true

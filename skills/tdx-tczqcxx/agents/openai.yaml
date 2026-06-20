@@ -1,0 +1,7 @@
+interface:
+  display_name: "TDX Theme Lifecycle"
+  short_description: "分析题材处于发酵、主升、分歧还是退潮阶段，并评估持续性。"
+  default_prompt: "使用 $tdx-theme-lifecycle，结合当前项目已有 TDX 工具判断题材生命周期、持续性、核心锚点和明日观察点。"
+
+policy:
+  allow_implicit_invocation: true

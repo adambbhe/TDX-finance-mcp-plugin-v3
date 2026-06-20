@@ -1,0 +1,4 @@
+interface:
+  display_name: "TDX Earnings Warning"
+  short_description: "使用 tdx_api_data 查询个股业绩预警数据。"
+  default_prompt: "使用 $tdx-earnings-warning，通过 tdx_api_data 查询个股业绩预警数据，并结合证券代码和证券 id 组织调用参数。"

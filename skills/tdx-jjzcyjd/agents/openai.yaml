@@ -1,0 +1,8 @@
+interface:
+  display_name: 基金重仓拥挤度
+  short_description: 判断基金重仓股是机构共识优质资产还是过度拥挤的踩踏风险标的。
+  default_description: 使用基金重仓拥挤度技能，分析某只基金重仓股的机构持仓集中度、估值水平、股价位置，判断是"机构共识优质资产"还是"已经过度拥挤、稍有不及预期就容易踩踏"的标的。
+  default_prompt: 使用 $基金重仓拥挤度技能，分析用户关注的基金重仓股，评估机构持仓集中度、拥挤程度、估值水平与股价位置，判断是否存在踩踏风险，并给出投资建议。
+
+policy:
+  allow_implicit_invocation: true

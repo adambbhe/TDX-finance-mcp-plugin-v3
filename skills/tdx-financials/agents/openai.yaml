@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Financials
+  short_description: 使用 tdx_api_data 查询财务报表、行业排名、主营构成、估值历史和员工指标。
+  default_prompt: 使用 $tdx-financials，通过 tdx_api_data 查询财务分析数据，并根据需求选择利润表、现金流量表、资产负债表、行业排名、专项指标、主营构成、估值历史或员工相关指标后总结重点。
+
+policy:
+  allow_implicit_invocation: true

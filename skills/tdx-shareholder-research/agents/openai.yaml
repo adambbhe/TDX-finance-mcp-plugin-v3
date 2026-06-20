@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Shareholder Research
+  short_description: 使用 tdx_api_data 查询股东研究数据，支持控股股东、股东人数、排名和前十大股东。
+  default_prompt: 使用 $tdx-shareholder-research，通过 tdx_api_data 查询股东研究数据，并根据需求选择控股股东、股东人数、股东人数排名、十大流通股东或十大股东后总结重点。
+
+policy:
+  allow_implicit_invocation: true

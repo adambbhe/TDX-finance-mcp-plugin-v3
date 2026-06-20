@@ -1,0 +1,124 @@
+{
+  "id": "tdx-finance-mcp",
+  "enabledByDefault": true,
+  "name": "TDX Finance MCP",
+  "description": "通达信金融数据服务 MCP 插件 (v3 精简版)。提供 A 股实时行情、K线、F10 基本面、智能选股、指标筛选与股票代码检索等 6 个核心工具，内置 45 个专业投资分析技能。",
+  "version": "3.0.1",
+  "author": "TDX Team",
+  "license": "MIT",
+  "repository": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3",
+  "bundlesSkills": true,
+  "skillsDir": "./skills",
+  "skillsCount": 45,
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "tdxApiToken": {
+        "type": "string",
+        "title": "TDX API Token (必填)",
+        "description": "通达信 API 密钥 - 从通达信官方获取的数据服务授权令牌。作为 HTTP header token 发送，未设置时回退到环境变量 TDX_API_KEY。",
+        "default": "",
+        "examples": [
+          "your-tdx-api-token-here"
+        ],
+        "pattern": "^[a-zA-Z0-9_-]+$"
+      },
+      "apiEndpoint": {
+        "type": "string",
+        "title": "API Endpoint (可选)",
+        "description": "自定义 API 端点地址，默认使用官方端点。仅对服务器1的工具生效。",
+        "default": "http://tdxhub.icfqs.com:7615/TQLEX",
+        "format": "uri"
+      }
+    },
+    "required": [
+      "tdxApiToken"
+    ]
+  },
+  "tools": [
+    {
+      "name": "tdx_api_data",
+      "label": "TDX API Data",
+      "description": "统一 F10 内部金融 API 调用工具，支持多种参数模板和自动推导模式 (Server: tdxhub.icfqs.com:7615)",
+      "category": "core"
+    },
+    {
+      "name": "tdx_quotes",
+      "label": "TDX Quotes",
+      "description": "实时行情数据查询工具 (Entry: TdxShare.PBHQInfo)",
+      "category": "market-data"
+    },
+    {
+      "name": "tdx_kline",
+      "label": "TDX K-Line",
+      "description": "K线历史数据查询工具 (Entry: TdxShare.PBFXT)",
+      "category": "market-data"
+    },
+    {
+      "name": "tdx_lookup_stock",
+      "label": "TDX Lookup Stock",
+      "description": "股票/指数/基金代码 RAG 检索工具 (Server: ai.icfqs.com:8965)",
+      "category": "utility"
+    },
+    {
+      "name": "tdx_screener",
+      "label": "TDX Screener",
+      "description": "自然语言智能选股工具 (Entry: JNLPSE:wendaQuery)",
+      "category": "screening"
+    },
+    {
+      "name": "tdx_indicator_select",
+      "label": "TDX Indicator Select",
+      "description": "金融指标选择与查询工具 (Entry: NLPSE:InfoSelectV2)",
+      "category": "indicator"
+    }
+  ],
+  "supportedSkills": [
+    "tdx-agzxsb",
+    "tdx-bkbj",
+    "tdx-board-cpbd",
+    "tdx-board-valuation",
+    "tdx-bxzjxw",
+    "tdx-chltz",
+    "tdx-company-info",
+    "tdx-czzdxfxjs",
+    "tdx-dividend-financing",
+    "tdx-dragon-tiger",
+    "tdx-earnings-warning",
+    "tdx-event-driven-short-term-catalyst",
+    "tdx-fhgdhb",
+    "tdx-financials",
+    "tdx-fsxypmsb",
+    "tdx-ggtzljyj",
+    "tdx-ggwdzk",
+    "tdx-ggycbfx",
+    "tdx-gszddf",
+    "tdx-hot-topic",
+    "tdx-industry-chain",
+    "tdx-industry-chain-mapping",
+    "tdx-jgccgdfx",
+    "tdx-jjzcyjd",
+    "tdx-lhbxwfg",
+    "tdx-main-position",
+    "tdx-mrtyjb",
+    "tdx-position-decision",
+    "tdx-quant",
+    "tdx-report-rating",
+    "tdx-share-capital",
+    "tdx-shareholder-research",
+    "tdx-stock-events",
+    "tdx-tczqcxx",
+    "tdx-trade-plan",
+    "tdx-trading-info",
+    "tdx-valuation-pricing-framework",
+    "tdx-wxd-a",
+    "tdx-wxd-bk",
+    "tdx-wxd-etf",
+    "tdx-wxd-jj",
+    "tdx-yjygby",
+    "tdx-zjftjytl",
+    "tdx-ztltby",
+    "tdx-zzjdysyfx"
+  ]
+}

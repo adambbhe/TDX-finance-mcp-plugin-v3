@@ -1,0 +1,7 @@
+interface:
+  display_name: "TDX Report Rating"
+  short_description: "使用 tdx_api_data 查询研报评级一致预期。"
+  default_prompt: "使用 $tdx-report-rating，通过 tdx_api_data 查询研报评级一致预期并总结关键结论。"
+
+policy:
+  allow_implicit_invocation: true

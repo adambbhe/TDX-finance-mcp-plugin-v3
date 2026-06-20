@@ -1,0 +1,6 @@
+﻿interface:
+  display_name: "TDX Dragon Tiger Seat Style"
+  short_description: "龙虎榜席位风格、资金行为与游资研究分析 skill。"
+  default_prompt: "Use $tdx-dragon-tiger-seat-style to analyze 龙虎榜席位风格、资金行为、游资线索，并输出问答、报告或金融文章。"
+policy:
+  allow_implicit_invocation: true

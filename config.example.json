@@ -1,0 +1,17 @@
+{
+  "plugins": {
+    "tdx-finance-mcp": {
+      "enabled": true,
+      "config": {
+        "tdxApiToken": "YOUR_TDX_API_TOKEN_HERE",
+        "apiEndpoint": "http://tdxhub.icfqs.com:7615/TQLEX"
+      }
+    }
+  },
+  "env": {
+    "TDX_API_KEY": "",
+    "TDX_API_DATA_ENDPOINT": ""
+  },
+  "logging": { "level": "info", "format": "json" },
+  "timeout": { "default_ms": 45000 }
+}

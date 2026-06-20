@@ -1,0 +1,7 @@
+interface:
+  display_name: TDX Share Capital
+  short_description: 使用 tdx_api_data 查询股本相关信息，支持股本结构、股本变动、限售解禁、股票回购。
+  default_prompt: 使用 $tdx-share-capital，通过 tdx_api_data 查询股本相关信息，并根据需求选择股本结构、股本变动、限售解禁或股票回购后总结重点。
+
+policy:
+  allow_implicit_invocation: true
