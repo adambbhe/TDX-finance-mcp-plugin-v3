@@ -267,19 +267,17 @@ Token 来源优先级：插件配置 `tdxApiToken` → 环境变量 `TDX_API_KEY
 ## 故障排查
 
 **Q：OpenClaw 安装时报 validation 警告 / 工具未注册 / 初始化被阻断？**
-已在 **v3.1.2** 修复。根因在 `openclaw.plugin.json` 的 `configSchema` 本身（与你填的配置值无关，所以改配置也过不了）：
+已在 **v3.1.2** 修复。根因是 **plugin id 不匹配**：`index.js` 导出的 `id: "tdx-finance"` 与 manifest `openclaw.plugin.json` 的 `id: "tdx-finance-mcp"` 不一致，OpenClaw 对不上 manifest 就会验证失败、工具不注册（**与你填的配置值无关，所以改配置也过不了**）。修复方法是把 `index.js` 的 `id`/`name` 对齐成 `tdx-finance-mcp` / `TDX Finance MCP`。
 
-- `apiEndpoint` 的 `"format": "uri"` —— strict JSON-Schema 校验器（未装 ajv-formats 的 AJV）遇到 `format` 会抛 "unknown format"，直接阻断初始化、工具不注册。
-- `tdxApiToken` 的 `"default": ""` + `"pattern"` —— 空默认值不满足 pattern，注入默认后校验失败。
-- 顶层 `"additionalProperties": false` —— 配置里多一个键即整体拒绝。
-
-修复后 `configSchema` 仅保留 `type/properties/required`。请升级到 ≥3.1.2，并把 `config.json` 精简为只填 token：
+升级到 ≥3.1.2 后，`config.json` 只需填 token：
 
 ```json
 { "plugins": { "tdx-finance-mcp": { "enabled": true, "config": { "tdxApiToken": "TDX-你的token" } } } }
 ```
 
-然后重新加载插件即可。自定义端点改用环境变量 `TDX_API_DATA_ENDPOINT`（不再需要写进 config）。
+然后重新加载插件即可。自定义端点改用环境变量 `TDX_API_DATA_ENDPOINT`（v3.1.2 起 config 已不含 apiEndpoint 字段）。
+
+> 附：v3.1.2 也顺手简化了 `configSchema`（移除 `format:"uri"`、空默认+pattern、`additionalProperties:false`）作为次要 hardening，但那**不是**本次安装失败的根因。
 
 **Q：如何获取 TDX API Token？**
 联系通达信官方申请数据服务权限。Token 通常为 `TDX-xxxx...` 格式。

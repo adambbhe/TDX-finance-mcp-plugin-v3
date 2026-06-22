@@ -8153,12 +8153,12 @@ const STATIC_TOOLS = [
 	}
 ];
 const plugin = {
-	id: "tdx-finance",
-	name: "TDX Finance",
+	id: "tdx-finance-mcp",
+	name: "TDX Finance MCP",
 	description: "TDX finance data plugin.",
 	configSchema: TDX_FINANCE_PLUGIN_CONFIG_SCHEMA,
 	register(api) {
-		api.logger.info("tdx-finance: registering plugin...");
+		api.logger.info("tdx-finance-mcp: registering plugin...");
 		const context = {
 			logger: api.logger,
 			tdxApiToken: resolveTdxApiToken(api.pluginConfig)
@@ -8171,7 +8171,7 @@ const plugin = {
 				parameters: tool.parameters,
 				execute: tool.createExecute(context)
 			});
-			api.logger.info(`tdx-finance: registered tool: ${tool.name}`);
+			api.logger.info(`tdx-finance-mcp: registered tool: ${tool.name}`);
 		}
 	}
 };

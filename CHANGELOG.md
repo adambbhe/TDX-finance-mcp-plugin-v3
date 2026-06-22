@@ -6,11 +6,8 @@
 
 ### 修复（Fixed）
 
-- **插件初始化 validation 失败 / 工具未注册**：`openclaw.plugin.json` 的 `configSchema` 含三处会让 strict JSON-Schema 校验器报错并阻断初始化的写法，已全部移除：
-  - `apiEndpoint` 的 `"format": "uri"` —— 未装 ajv-formats 的 strict AJV 遇到 `format` 关键字会抛 "unknown format"，直接阻断初始化（与配置值是否正确无关）。
-  - `tdxApiToken` 的 `"default": ""` + `"pattern"` —— 空字符串默认值不满足 pattern，校验器注入默认值后再校验即失败。
-  - 顶层 `"additionalProperties": false` —— 配置里多出任意一个键（含加载器注入的元数据）即整体拒绝。
-  现 `configSchema` 仅保留 `type/properties/required`，两字段只留 `type/title/description`；`config.example.json` 精简为只填 `tdxApiToken`（端点用代码内置默认值兜底，功能不变）。
+- **插件初始化 validation 失败 / 工具未注册（根因：plugin id 不匹配）**：`index.js` 导出的插件 `id: "tdx-finance"` 与 manifest `openclaw.plugin.json` 声明的 `id: "tdx-finance-mcp"` 不一致，OpenClaw 无法把运行时插件对上 manifest，导致验证失败、6 个工具不注册。已将 `index.js` 的 `id`/`name` 对齐为 `tdx-finance-mcp` / `TDX Finance MCP`（manifest 的 id 被 config、依赖、仓库到处引用，故以它为准）。
+- **（次要 hardening，非本次根因）** 顺手简化了 `configSchema`：移除 `apiEndpoint` 的 `"format": "uri"`、`tdxApiToken` 的 `"default": ""`+`"pattern"`、顶层 `"additionalProperties": false`，仅保留 `type/properties/required`；`config.example.json` 精简为只填 `tdxApiToken`。这是降低 strict 校验器风险的清理，但**不是**本次安装失败的原因。
 
 ### 新增（Added）
 
