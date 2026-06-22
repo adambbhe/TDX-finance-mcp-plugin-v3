@@ -1,0 +1,13 @@
+# 每日运行产物（本地生成，不入库）
+modeA-result.md
+modeA-pool.json
+modeA-raw.json
+modeB-result.md
+modeB-data.json
+backtest-report.md
+backtest-samples.json
+out.txt
+*.log
+
+# 归档的每日数据（保留 README，忽略日期子目录）
+history/[0-9]*/

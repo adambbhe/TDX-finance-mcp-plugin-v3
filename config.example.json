@@ -3,8 +3,7 @@
     "tdx-finance-mcp": {
       "enabled": true,
       "config": {
-        "tdxApiToken": "YOUR_TDX_API_TOKEN_HERE",
-        "apiEndpoint": "http://tdxhub.icfqs.com:7615/TQLEX"
+        "tdxApiToken": "YOUR_TDX_API_TOKEN_HERE"
       }
     }
   },

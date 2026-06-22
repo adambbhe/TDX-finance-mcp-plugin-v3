@@ -2,34 +2,26 @@
   "id": "tdx-finance-mcp",
   "enabledByDefault": true,
   "name": "TDX Finance MCP",
-  "description": "通达信金融数据服务 MCP 插件 (v3 精简版)。提供 A 股实时行情、K线、F10 基本面、智能选股、指标筛选与股票代码检索等 6 个核心工具，内置 45 个专业投资分析技能。",
-  "version": "3.0.1",
+  "description": "通达信金融数据服务 MCP 插件 (v3 精简版)。提供 A 股实时行情、K线、F10 基本面、智能选股、指标筛选与股票代码检索等 6 个核心工具，内置 46 个专业投资分析技能（含 1 个量化打板技能：一进二打板）。",
+  "version": "3.1.2",
   "author": "TDX Team",
   "license": "MIT",
   "repository": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3",
   "bundlesSkills": true,
   "skillsDir": "./skills",
-  "skillsCount": 45,
+  "skillsCount": 46,
   "configSchema": {
     "type": "object",
-    "additionalProperties": false,
     "properties": {
       "tdxApiToken": {
         "type": "string",
         "title": "TDX API Token (必填)",
-        "description": "通达信 API 密钥 - 从通达信官方获取的数据服务授权令牌。作为 HTTP header token 发送，未设置时回退到环境变量 TDX_API_KEY。",
-        "default": "",
-        "examples": [
-          "your-tdx-api-token-here"
-        ],
-        "pattern": "^[a-zA-Z0-9_-]+$"
+        "description": "通达信 API 密钥 - 从通达信官方获取的数据服务授权令牌。作为 HTTP header token 发送，未设置时回退到环境变量 TDX_API_KEY。"
       },
       "apiEndpoint": {
         "type": "string",
         "title": "API Endpoint (可选)",
-        "description": "自定义 API 端点地址，默认使用官方端点。仅对服务器1的工具生效。",
-        "default": "http://tdxhub.icfqs.com:7615/TQLEX",
-        "format": "uri"
+        "description": "自定义 API 端点地址，留空则使用官方默认端点 http://tdxhub.icfqs.com:7615/TQLEX。仅对服务器1的工具生效。"
       }
     },
     "required": [
@@ -119,6 +111,7 @@
     "tdx-yjygby",
     "tdx-zjftjytl",
     "tdx-ztltby",
-    "tdx-zzjdysyfx"
+    "tdx-zzjdysyfx",
+    "tdx-daban-yijinerb-PS-SKILL"
   ]
 }

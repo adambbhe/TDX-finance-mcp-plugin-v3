@@ -2,6 +2,27 @@
 
 本文件记录 TDX Finance MCP Plugin 的版本变更。
 
+## [3.1.2] — 2026-06-20 · 安装校验修复 + 一进二打板技能
+
+### 修复（Fixed）
+
+- **插件初始化 validation 失败 / 工具未注册**：`openclaw.plugin.json` 的 `configSchema` 含三处会让 strict JSON-Schema 校验器报错并阻断初始化的写法，已全部移除：
+  - `apiEndpoint` 的 `"format": "uri"` —— 未装 ajv-formats 的 strict AJV 遇到 `format` 关键字会抛 "unknown format"，直接阻断初始化（与配置值是否正确无关）。
+  - `tdxApiToken` 的 `"default": ""` + `"pattern"` —— 空字符串默认值不满足 pattern，校验器注入默认值后再校验即失败。
+  - 顶层 `"additionalProperties": false` —— 配置里多出任意一个键（含加载器注入的元数据）即整体拒绝。
+  现 `configSchema` 仅保留 `type/properties/required`，两字段只留 `type/title/description`；`config.example.json` 精简为只填 `tdxApiToken`（端点用代码内置默认值兜底，功能不变）。
+
+### 新增（Added）
+
+- **`tdx-daban-yijinerb-PS-SKILL`（一进二量化打板）** 技能 + 完整本地闭环脚本：`run-modeA.mjs`（盘后建监测池）、`run-modeB.mjs`（次日 9:25-9:29 竞价定夺）、`backtest.mjs`（回测/阈值校准）、`history/` 按日自动归档、离线回归测试（`test-*.mjs`）。详见该技能目录的 `SKILL.md` / `README.md`。
+- 接口字段实测确认：`tdx_screener "涨停"` 直接返回 封单金额/首次涨停时间/涨停打开次数/封成比/板型/题材；`tdx_quotes` 含 `LB`量比、`Wtb`委比、`ZTPrice`涨停价、`CALTZ`流通市值、`BspInfo`五档。
+
+### 变更（Changed）
+
+- 删除早期的“当日涨停打板”技能，聚焦一进二。技能总数 45 → 46，版本 3.0.1 → 3.1.2。
+
+---
+
 ## [3.0.1] — 2026-06-20 · 实测与权限标注
 
 基于有效 Token 通过 `test/run-tests.mjs` 对真实插件代码做了端到端测试，并据结果做最小标注。
