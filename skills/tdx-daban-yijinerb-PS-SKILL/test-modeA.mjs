@@ -25,9 +25,9 @@ function qualityScore(s){
   else if(/^09:[45]/.test(ft)||/^10:[0-2]/.test(ft)){sc+=11;notes.push("上午封板");}
   else if(/^1[01]:/.test(ft)){sc+=5;notes.push("午前封板");}
   else if(/^1[3-5]:/.test(ft)){sc-=5;notes.push("下午/尾盘(弱)");}
-  if(s.fengLiu!=null){ if(s.fengLiu>=0.03){sc+=18;notes.push("封流比≥3%(极硬)");} else if(s.fengLiu>=0.015){sc+=12;notes.push("封流比1.5-3%(硬)");} else if(s.fengLiu>=0.008){sc+=6;notes.push("封流比0.8-1.5%(中)");} else {sc+=1;notes.push("封流比<0.8%(偏软)");} }
+  if(s.fengLiu!=null){ if(s.fengLiu>=0.015){sc+=18;notes.push("封流比≥1.5%(极硬)");} else if(s.fengLiu>=0.008){sc+=12;notes.push("封流比0.8-1.5%(硬)");} else if(s.fengLiu>=0.004){sc+=6;notes.push("封流比0.4-0.8%(中)");} else {sc+=1;notes.push("封流比<0.4%(偏软)");} }
   else { const yi=s.fdje!=null?s.fdje/1e8:0; if(yi>=5)sc+=12; else if(yi>=2)sc+=8; else if(yi>=0.5)sc+=4; }
-  if(s.fcb!=null){ if(s.fcb>=60){sc+=6;notes.push("封成比高");} else if(s.fcb>=30){sc+=3;notes.push("封成比中");} else notes.push("封成比低"); }
+  if(s.fcb!=null){ if(s.fcb>=32){sc+=6;notes.push("封成比高");} else if(s.fcb>=16){sc+=4;notes.push("封成比中");} else if(s.fcb>=8){sc+=2;notes.push("封成比偏中");} else notes.push("封成比低"); }
   const bt=String(s.boardType||"");
   if(bt.includes("一字")){sc+=4;notes.push("一字板");} else if(bt.includes("换手")){sc+=8;notes.push("换手板");}
   if(s.openCnt!=null&&s.openCnt>0){sc-=Math.min(18,s.openCnt*6);notes.push(`开板${s.openCnt}次`);} else if(s.openCnt===0){sc+=3;notes.push("零开板");}
@@ -59,8 +59,8 @@ ok(Math.abs(s.fengLiu-0.03415)<0.0005,"封流比≈3.41%");
 
 console.log("\n== 测试4：封板质量评分 ==");
 const q=qualityScore(s); console.log(`   得分=${q.score}  明细=[${q.notes.join("、")}]`);
-ok(q.score===95,"002167 重标后=95(40+早盘20+封流比≥3%18+封成比高6+一字4+零开板3+题材4)");
-ok(q.notes.includes("封流比≥3%(极硬)")&&q.notes.includes("零开板")&&q.notes.includes("封成比高"),"明细含三项新指标(重标档位)");
+ok(q.score===95,"002167 v3.2重标后=95(40+早盘20+封流比≥1.5%18+封成比高6+一字4+零开板3+题材4)");
+ok(q.notes.includes("封流比≥1.5%(极硬)")&&q.notes.includes("零开板")&&q.notes.includes("封成比高"),"明细含三项新指标(v3.2档位)");
 
 console.log(`\n==== 结果：${pass} 通过 / ${fail} 失败 ====`);
 process.exit(fail?1:0);

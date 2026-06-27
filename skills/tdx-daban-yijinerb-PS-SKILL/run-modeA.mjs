@@ -111,16 +111,16 @@ function qualityScore(s){
   else if (/^09:[45]/.test(ft)||/^10:[0-2]/.test(ft)){sc+=11;notes.push("上午封板");}
   else if (/^1[01]:/.test(ft)){sc+=5;notes.push("午前封板");}
   else if (/^1[3-5]:/.test(ft)){sc-=5;notes.push("下午/尾盘封板(弱)");}
-  // 封流比（封板硬度主指标，阈值按实盘首板分布校准 v3.1：实测首板封流比集中在 0.1%~3.4%）
+  // 封流比（封板硬度主指标，阈值按 362 只首板分布重标 v3.2：中位 0.47%、P85≈1.3%；≥1.5% 才算极硬）
   if (s.fengLiu!=null){
-    if (s.fengLiu>=0.03){sc+=18;notes.push("封流比≥3%(极硬)");}
-    else if (s.fengLiu>=0.015){sc+=12;notes.push("封流比1.5-3%(硬)");}
-    else if (s.fengLiu>=0.008){sc+=6;notes.push("封流比0.8-1.5%(中)");}
-    else {sc+=1;notes.push("封流比<0.8%(偏软)");}
+    if (s.fengLiu>=0.015){sc+=18;notes.push("封流比≥1.5%(极硬)");}
+    else if (s.fengLiu>=0.008){sc+=12;notes.push("封流比0.8-1.5%(硬)");}
+    else if (s.fengLiu>=0.004){sc+=6;notes.push("封流比0.4-0.8%(中)");}
+    else {sc+=1;notes.push("封流比<0.4%(偏软)");}
   } else { const yi=s.fdje!=null?s.fdje/1e8:0;          // 无封流比时退回看绝对封单
     if(yi>=5)sc+=12; else if(yi>=2)sc+=8; else if(yi>=0.5)sc+=4; }
-  // 封成比（封得实不实，阈值按实盘校准：实测 2~142）
-  if (s.fcb!=null){ if(s.fcb>=60){sc+=6;notes.push("封成比高");} else if(s.fcb>=30){sc+=3;notes.push("封成比中");} else {notes.push("封成比低");} }
+  // 封成比（封得实不实，阈值按 362 样本分布重标 v3.2：中位 7.7、P85≈32）
+  if (s.fcb!=null){ if(s.fcb>=32){sc+=6;notes.push("封成比高");} else if(s.fcb>=16){sc+=4;notes.push("封成比中");} else if(s.fcb>=8){sc+=2;notes.push("封成比偏中");} else {notes.push("封成比低");} }
   // 板型
   const bt=String(s.boardType||"");
   if (bt.includes("一字")){sc+=4;notes.push("一字板");}

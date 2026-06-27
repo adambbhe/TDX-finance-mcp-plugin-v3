@@ -26,8 +26,8 @@ const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
 // ===== 特征分档（与 scoring-rules 一致；改阈值时改这里再回测对比）=====
 export const B = {
-  fengLiu: v=> v==null?"N/A": v>=0.03?"≥3%": v>=0.015?"1.5-3%": v>=0.008?"0.8-1.5%":"<0.8%",
-  fcb:     v=> v==null?"N/A": v>=60?"≥60": v>=30?"30-60":"<30",
+  fengLiu: v=> v==null?"N/A": v>=0.015?"≥1.5%": v>=0.008?"0.8-1.5%": v>=0.004?"0.4-0.8%":"<0.4%",
+  fcb:     v=> v==null?"N/A": v>=32?"≥32": v>=16?"16-32": v>=8?"8-16":"<8",
   firstTime: ft=>{ const s=String(ft||""); return /^09:[0-3]/.test(s)?"早盘(<09:40)": /^09:[45]|^10:[0-2]/.test(s)?"上午(09:40-10:29)": /^1[0-1]:/.test(s)?"午前":"午后"; },
   openCnt: n=> n==null?"N/A": n===0?"0次": n===1?"1次":"≥2次",
   board:   bt=>{ const s=String(bt||""); return s.includes("一字")?"一字板": s.includes("换手")?"换手板":"盘中板"; },

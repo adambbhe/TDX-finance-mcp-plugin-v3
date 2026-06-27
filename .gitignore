@@ -65,3 +65,12 @@ junit.xml
 .cache/
 .grunt/
 .lock-w-script
+
+# 安全：永不提交 Token / 密钥
+API TOKEN.txt
+*TOKEN*.txt
+*token*.txt
+config.json
+
+# 构建产物
+*.zip
