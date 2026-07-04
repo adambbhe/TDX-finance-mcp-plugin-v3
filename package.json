@@ -1,6 +1,6 @@
 {
   "name": "@tdx/tdx-finance-mcp",
-  "version": "3.0.1",
+  "version": "3.2.1",
   "description": "TDX Finance MCP Plugin v3 - 通达信金融数据服务 MCP 插件，提供 A 股行情、K线、F10 基本面、智能选股等 6 个核心工具，内置 45 个投资分析技能",
   "keywords": [
     "openclaw",

@@ -2,6 +2,28 @@
 
 本文件记录 TDX Finance MCP Plugin 的版本变更。
 
+## [3.2.1] — 2026-07-04 · tdx_quotes 行情格式化专业化
+
+### 修复（Fixed）
+
+- **`formatQuotesResult` 格式化专业化 + 空数据兜底**：原实现只输出「现价/涨跌幅/成交量/换手率」四项，且换手率等数值未做精度处理（如 `0.735299528%`）。现改为：
+  - 数值统一保留 2 位小数（换手率 `0.74%`、价格 2 位）；
+  - 新增字段（依据实测完整响应校准字段映射）：涨跌额、今开/最高/最低/昨收/均价 `Average`、成交额（`Amount`/元→亿）、量比 `LB`、**委比 `Wtb`（在 `ProInfo` 下，原 `pick` 未搜索该容器会漏引，已修复）**、内盘 `Inside`/外盘 `Outside`（主动买/卖量）、涨停 `ZTPrice`/跌停 `DTPrice`、总市值 `ZSZ`(ExtInfo/元→/1e8 亿)、流通市值（`ZSZ×LTGB/ZGB`，单位无关的比例法，回退 `LTGB×现价`）、市盈率 `SYL`、股息率 `MGGX`、五档买一/卖一（字段名容错，缺失跳过不报错）；
+  - `HSL` 保持按百分数展示，`Volume` 按手（=百股）处理，**均已用两只股票的接口自返回值做恒等式验证**：000001 `1.43e6手×100÷(流通股)=0.737% ≈ HSL 0.735%`；300750 用接口自带 `LTGB=425701.22万股` 算得 `258849×100÷(LTGB×1e4)×100=0.6081% == HSL 0.60805%`（比值 1.000）。故 Volume **不×100**、HSL **不×100**；
+  - **请求默认开启 `HasProInfo="1"`**（原默认 `"0"`）：否则 `ProInfo` 不返回，委比 `Wtb`/现量 `NowVol` 永远拿不到——即便解析了也是空的。现默认即可得委比；
+  - 内外盘增加占比展示（如 `内盘 82万手 / 外盘 61万手 (内57%/外43%)`）；五档买一/卖一附带委托量（如 `买一 10.51×3200手`，字段名容错）；
+  - 字段在 `HQInfo/ExtInfo/CalcInfo/顶层` 间按序查找，涨跌幅优先取 `CalcInfo.CAZAF`，否则由 `Now/Close` 计算；
+  - **空数据兜底**：当响应无有效行情字段（停牌、code/setcode 不匹配或接口返回空对象）时，返回明确提示 + 原始响应，而非仅回传空对象。
+  - 已用 mock 响应驱动真实插件代码路径验证（正常/空数据两用例通过）。
+
+### 说明（澄清，非代码变更）
+
+- 关于「TDX API 503 / Entry 名称错误 / Entry 应放 URL Query」：**插件代码本就正确**。所有 server1 工具（`tdx_quotes`→`TdxShare.PBHQInfo`、`tdx_kline`→`TdxShare.PBFXT`、`tdx_screener`→`JNLPSE:wendaQuery`、`tdx_indicator_select`→`NLPSE:InfoSelectV2`）与通用 `tdx_api_data` 均通过 `?Entry=...`（URL Query）传 Entry，请求体为 `{Head,...}` 或 `{Params:[...]}`，从不使用工具名作为 Entry。手工 curl 时若把 Entry 放进 body 或漏掉 `Head`，才会出现 503/空数据——那是调用方式问题，非插件缺陷。
+
+- 版本对齐：manifest 与 package.json 统一为 `3.2.1`（此前 package.json 滞留在 3.0.1）。
+
+---
+
 ## [3.2.0] — 2026-06-26 · 一进二打板·封流比/封成比阈值按 362 样本重标
 
 ### 变更（Changed）

@@ -3,7 +3,7 @@
   "enabledByDefault": true,
   "name": "TDX Finance MCP",
   "description": "通达信金融数据服务 MCP 插件 (v3 精简版)。提供 A 股实时行情、K线、F10 基本面、智能选股、指标筛选与股票代码检索等 6 个核心工具，内置 46 个专业投资分析技能（含 1 个量化打板技能：一进二打板）。",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "author": "TDX Team",
   "license": "MIT",
   "repository": "https://github.com/adambbhe/TDX-finance-mcp-plugin-v3",

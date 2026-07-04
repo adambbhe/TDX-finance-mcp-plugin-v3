@@ -7323,7 +7323,7 @@ async function fetchQuotes(params, apiEndpoint, tdxApiToken, logger) {
 		HasHQInfo: params.hasHQInfo ?? "1",
 		HasExtInfo: params.hasExtInfo ?? "1",
 		BspNum: params.bspNum ?? "5",
-		HasProInfo: params.hasProInfo ?? "0",
+		HasProInfo: params.hasProInfo ?? "1",
 		HasCalcInfo: params.hasCalcInfo ?? "0",
 		HasCwInfo: params.hasCwInfo ?? "0",
 		HasStatInfo: params.hasStatInfo ?? "0",
@@ -7366,32 +7366,109 @@ function validateCalcInfoParams(params) {
 function formatQuotesResult(data, logger) {
 	const result = data ?? {};
 	const baseInfo = result.BaseInfo;
-	const hqInfo = result.HQInfo;
-	const calcInfo = result.CalcInfo;
-	const summary = [];
-	if (baseInfo) {
-		const name = String(baseInfo.Name ?? "未知");
-		const code = baseInfo.Code ? String(baseInfo.Code) : "";
-		summary.push(code ? `【${name}】${code}` : `【${name}】`);
+	const hqInfo = result.HQInfo || {};
+	const extInfo = result.ExtInfo || {};
+	const calcInfo = result.CalcInfo || {};
+	const proInfo = result.ProInfo || {};
+
+	// 空数据兜底
+	if (!baseInfo && !hqInfo.Now) {
+		return {
+			content: [{ type: "text", text: `⚠️ 无效行情数据（停牌、code/setcode 不匹配或接口返回空），原始响应:\n${JSON.stringify(data, null, 2)}` }],
+			details: data
+		};
 	}
-	if (hqInfo) {
-		const now = hqInfo.Now;
-		const close = hqInfo.Close;
-		if (now != null && close != null && Number(close) !== 0) {
-			const change = (Number(now) - Number(close)) / Number(close) * 100;
-			const changeStr = change >= 0 ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`;
-			summary.push(`现价: ${String(now)} (${changeStr})`);
-		} else if (now != null) summary.push(`现价: ${String(now)}`);
-		if (hqInfo.Volume != null) summary.push(`成交量: ${(Number(hqInfo.Volume) / 1e4).toFixed(0)}万手`);
-		if (hqInfo.HSL != null) summary.push(`换手率: ${String(hqInfo.HSL)}%`);
+
+	const name = String(baseInfo?.Name ?? "未知");
+	const code = baseInfo?.Code ? String(baseInfo.Code) : "";
+	const summary = [`【${name}】${code}`];
+
+	// 价格与涨跌
+	const now = hqInfo.Now;
+	const close = hqInfo.Close ?? calcInfo?.CAZAF ? (hqInfo.Now / (1 + Number(calcInfo.CAZAF) / 100)) : hqInfo.Close;
+	const change = calcInfo?.CAZAF ?? (close != null && now != null && Number(close) !== 0 ? (Number(now) - Number(close)) / Number(close) * 100 : null);
+	if (now != null) summary.push(`现价: ${Number(now).toFixed(2)}`);
+	if (change != null) {
+		const changeAmt = now != null && close != null ? (Number(now) - Number(close)).toFixed(2) : null;
+		summary.push(`${change >= 0 ? "+" : ""}${change.toFixed(2)}%${changeAmt != null ? ` (${changeAmt >= 0 ? "+" : ""}${changeAmt})` : ""}`);
 	}
-	if (calcInfo?.CAZAF != null) summary.push(`涨幅: ${String(calcInfo.CAZAF)}%`);
-	if (baseInfo?.Name) logDebug$2(logger, `tdx-finance: 格式化结果 - ${String(baseInfo.Name)}(${String(baseInfo.Code ?? "")})`);
+
+	// 开盘/最高/最低/昨收/均价
+	if (hqInfo.Open != null) summary.push(`今开: ${Number(hqInfo.Open).toFixed(2)}`);
+	if (hqInfo.High != null) summary.push(`最高: ${Number(hqInfo.High).toFixed(2)}`);
+	if (hqInfo.Low != null) summary.push(`最低: ${Number(hqInfo.Low).toFixed(2)}`);
+	if (hqInfo.Close != null && !calcInfo?.CAZAF) summary.push(`昨收: ${Number(hqInfo.Close).toFixed(2)}`);
+	if (hqInfo.Average != null) summary.push(`均价: ${Number(hqInfo.Average).toFixed(2)}`);
+
+	// 成交量/成交额
+	if (hqInfo.Volume != null) {
+		const vol = Number(hqInfo.Volume);
+		summary.push(`成交量: ${vol >= 1e4 ? (vol / 1e4).toFixed(0) + "万手" : vol + "手"}`);
+	}
+	if (hqInfo.Amount != null) {
+		const amt = Number(hqInfo.Amount);
+		summary.push(`成交额: ${(amt / 1e8).toFixed(2)}亿`);
+	}
+
+	// 换手率（已验证：不×100）
+	if (hqInfo.HSL != null) summary.push(`换手率: ${Number(hqInfo.HSL).toFixed(2)}%`);
+
+	// 量比
+	if (hqInfo.LB != null) summary.push(`量比: ${Number(hqInfo.LB).toFixed(2)}`);
+
+	// 委比（在 ProInfo 下，原 default HasProInfo="0" 导致拿不到，现已默认开启）
+	if (proInfo.Wtb != null) summary.push(`委比: ${Number(proInfo.Wtb).toFixed(2)}%`);
+
+	// 内外盘
+	if (hqInfo.Inside != null || hqInfo.Outside != null) {
+		const inside = Number(hqInfo.Inside ?? 0), outside = Number(hqInfo.Outside ?? 0);
+		const total = inside + outside;
+		const insideStr = inside >= 1e4 ? (inside / 1e4).toFixed(0) + "万手" : inside + "手";
+		const outsideStr = outside >= 1e4 ? (outside / 1e4).toFixed(0) + "万手" : outside + "手";
+		if (total > 0) {
+			summary.push(`内盘 ${insideStr} / 外盘 ${outsideStr} (内${(inside / total * 100).toFixed(0)}% / 外${(outside / total * 100).toFixed(0)}%)`);
+		} else {
+			summary.push(`内盘 ${insideStr} / 外盘 ${outsideStr}`);
+		}
+	}
+
+	// 涨停/跌停价
+	if (hqInfo.ZTPrice != null) summary.push(`涨停: ${Number(hqInfo.ZTPrice).toFixed(2)}`);
+	if (hqInfo.DTPrice != null) summary.push(`跌停: ${Number(hqInfo.DTPrice).toFixed(2)}`);
+
+	// 市盈率/股息率
+	if (calcInfo.SYL != null) summary.push(`市盈率: ${Number(calcInfo.SYL).toFixed(2)}`);
+	if (calcInfo.MGGX != null) summary.push(`股息率: ${Number(calcInfo.MGGX).toFixed(2)}%`);
+
+	// 总市值/流通市值
+	const zsz = extInfo.ZSZ;
+	if (zsz != null) {
+		const ltgb = extInfo.LTGB;
+		const ltgz = calcInfo.CALTZ;
+		let ltsx = null;
+		if (ltgz != null) ltsx = Number(ltgz);
+		else if (ltgb != null && now != null) ltsx = Number(ltgb) * 1e4 * Number(now);
+		const totalStr = (Number(zsz) / 1e8).toFixed(2) + "亿";
+		if (ltsx != null) {
+			const ltStr = (ltsx / 1e8).toFixed(2) + "亿";
+			summary.push(`总市值: ${totalStr} / 流通: ${ltStr}`);
+		} else {
+			summary.push(`总市值: ${totalStr}`);
+		}
+	}
+
+	// 五档买一/卖一
+	const bspInfo = hqInfo.BspInfo || extInfo.BspInfo;
+	if (bspInfo && bspInfo.length > 0) {
+		const bid = bspInfo.find(b => b.Price != null && Number(b.Price) > 0);
+		const ask = bspInfo.find(b => b.Price != null && Number(b.Price) < 0);
+		if (bid) summary.push(`买一: ${Math.abs(Number(bid.Price)).toFixed(2)}×${(Number(bid.Volume ?? 0) / 100).toFixed(0)}手`);
+		if (ask) summary.push(`卖一: ${Math.abs(Number(ask.Price)).toFixed(2)}×${(Number(ask.Volume ?? 0) / 100).toFixed(0)}手`);
+	}
+
+	if (baseInfo?.Name) logDebug$2(logger, `tdx-finance: 格式化结果 - ${name}(${code})`);
 	return {
-		content: [{
-			type: "text",
-			text: summary.length > 0 ? `${summary.join(" | ")}\n\n详细信息:\n${JSON.stringify(data, null, 2)}` : JSON.stringify(data, null, 2)
-		}],
+		content: [{ type: "text", text: summary.join(" | ") + "\n\n详细信息:\n" + JSON.stringify(data, null, 2) }],
 		details: data
 	};
 }
