@@ -66,9 +66,18 @@ function detectCols(headers, row){
   return c;
 }
 async function getLimitUps(){
-  const res = await call("JNLPSE:wendaQuery", [{message:"涨停", rang:"AG", pageNo:"1", pageSize:"120"}]);
+  // 选股走 JNLPSE NLP 服务，偶发繁忙/宕机；自动重试 3 次（请求体固定为正确数组格式）
+  let res;
+  for (let attempt=1; attempt<=3; attempt++){
+    res = await call("JNLPSE:wendaQuery", [{message:"涨停", rang:"AG", pageNo:"1", pageSize:"120"}]);
+    if (res.status===200 && Array.isArray(res.json)) break;
+    const why = res.error || `HTTP${res.status}` + (typeof res.json==="string" ? (": "+String(res.json).slice(0,80))
+      : (res.json && (res.json.error||res.json.msg) ? (": "+JSON.stringify(res.json).slice(0,80)) : ""));
+    console.error(`[涨停] 第 ${attempt}/3 次失败（${why}）${attempt<3?"，1.5s 后重试...":"，放弃"}`);
+    if (attempt<3) await sleep(1500);
+  }
   rawDump.screener_meta_headers = Array.isArray(res.json) ? res.json.slice(0,3) : res.json;
-  if (res.status!==200 || !Array.isArray(res.json)) { console.error("[涨停] 异常:", res.error||res.status); return {list:[]}; }
+  if (res.status!==200 || !Array.isArray(res.json)) { console.error("[涨停] 选股 NLP 接口多次失败（服务可能繁忙/宕机），请稍后重跑。"); return {list:[]}; }
   const [meta, headers, , ...rows] = res.json;
   if (!rows.length) return {list:[], total:meta?.[2]};
   const cols = detectCols(headers, rows[0]);

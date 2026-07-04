@@ -33,6 +33,12 @@ async function call(entry, body){
   finally{ clearTimeout(t); }
 }
 
+// 选股 NLP 服务偶发繁忙/宕机，自动重试（请求体固定为正确数组格式）
+async function callScreenerRetry(body, n=3){
+  let res;
+  for (let a=1;a<=n;a++){ res=await call("JNLPSE:wendaQuery", body); if (res.status===200 && Array.isArray(res.json)) return res; if (a<n) await sleep(1500); }
+  return res;
+}
 async function getQuote(code,setcode){
   const res=await call("TdxShare.PBHQInfo",{Head:{Target:"0",CharSet:"UTF8"},Code:code,Setcode:setcode,HasHQInfo:"1",HasExtInfo:"1",BspNum:"5",HasProInfo:"1",HasCalcInfo:"1",HasCwInfo:"0",HasStatInfo:"0"});
   const j=res.json||{}; const hq=j.HQInfo||{},ext=j.ExtInfo||{},pro=j.ProInfo||{};
@@ -79,7 +85,7 @@ export function clusterPosition(items){ // items: [{theme, base}]，原地写 ho
 
 async function marketGate(){
   const [sh,sz,cy,zt]=await Promise.all([getQuote("000001","1"),getQuote("399001","0"),getQuote("399006","0"),
-    call("JNLPSE:wendaQuery",[{message:"涨停",rang:"AG",pageNo:"1",pageSize:"1"}])]);
+    callScreenerRetry([{message:"涨停",rang:"AG",pageNo:"1",pageSize:"1"}])]);
   const ztCount = Array.isArray(zt.json)? num(zt.json[0]?.[2]) : null;
   const regime = ztCount==null?"未知":(ztCount>80?"强势":ztCount>=40?"震荡":"弱势退潮");
   return {sh,sz,cy,ztCount,regime};
