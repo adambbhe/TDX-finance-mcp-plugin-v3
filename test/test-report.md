@@ -1,56 +1,56 @@
 # TDX Finance MCP Plugin v3 — 测试报告
 
-- 生成时间: 2026-06-20T07:31:27.483Z
+- 生成时间: 2026-10-12T03:24:39.738Z
 - 测试标的: 000001  | Token: TDX-971f51…
-- 工具: 6/6 可用 | F10: 23/32 可用 | 技能: ✅41 🟡3 ❌0
+- 工具: 6/6 可用 | F10: 26/32 可用 | 技能: ✅42 🟡2 ❌0
 
 ## 1. 核心工具
 
 | 工具 | 状态 | 错误码/说明 | 耗时 |
 |---|---|---|---|
-| tdx_quotes | ✅ |  | 206ms |
-| tdx_kline | ✅ |  | 95ms |
-| tdx_lookup_stock | ✅ |  | 264ms |
-| tdx_screener | ✅ |  | 211ms |
-| tdx_indicator_select | ✅ |  | 1186ms |
-| tdx_api_data | ✅ |  | 91ms |
+| tdx_quotes | ✅ |  | 219ms |
+| tdx_kline | ✅ |  | 92ms |
+| tdx_lookup_stock | ✅ |  | 211ms |
+| tdx_screener | ✅ |  | 225ms |
+| tdx_indicator_select | ✅ |  | 1259ms |
+| tdx_api_data | ✅ |  | 124ms |
 
 ## 2. F10 探测矩阵（规范配对）
 
 | entry\|fixedTag | 状态 | 说明 | 耗时 |
 |---|---|---|---|
-| tdxf10_gg_comreq|jglhb | ✅ |  | 80ms |
-| tdxf10_gg_fhrz_fh|fh | ❌ ERR | 未注册(E|-7202) | 83ms |
-| tdxf10_gg_fhrz|fhlszs_gxl | ❌ ERR | 需登录(401) | 210ms |
-| tdxf10_gg_fhrz|fhpm_pxrzb | ✅ |  | 86ms |
-| tdxf10_gg_fhrz|pxmz | ✅ |  | 92ms |
-| tdxf10_gg_gbjg|gbjg | ✅ |  | 95ms |
-| tdxf10_gg_gbjg|xslt | ✅ |  | 85ms |
-| tdxf10_gg_gdyjcgmx|gdjc | ❌ ERR | 参数错误(-1005) | 126ms |
-| tdxf10_gg_gdyjcgmx|gdjcmxrq | ❌ ERR | 参数错误(-1005) | 93ms |
-| tdxf10_gg_gdyj|cgbd | ✅ |  | 89ms |
-| tdxf10_gg_gdyj|gdrs | ❌ ERR | 需登录(401) | 97ms |
-| tdxf10_gg_gdyj|jgcg | ✅ |  | 90ms |
-| tdxf10_gg_gdyj|jgcgqk | ✅ |  | 78ms |
-| tdxf10_gg_gdyj|ltgd | ✅ |  | 169ms |
-| tdxf10_gg_gsgk|0 | ✅ |  | 95ms |
-| tdxf10_gg_gsgk|20 | ✅ |  | 99ms |
-| tdxf10_gg_gsgk|4 | ✅ |  | 88ms |
-| tdxf10_gg_gsgk|5 | ✅ |  | 103ms |
-| tdxf10_gg_iyds|yxsbxx | ❌ ERR | 未注册(E|-7202) | 116ms |
-| tdxf10_gg_jyds|dzjy | ✅ |  | 90ms |
-| tdxf10_gg_jyds|rzrq | ❌ ERR | 需登录(401) | 89ms |
-| tdxf10_gg_jyds|zjlx | ✅ |  | 95ms |
-| tdxf10_gg_jyds|ztfx | ✅ |  | 87ms |
-| tdxf10_gg_rdtc|sjcd | ✅ |  | 93ms |
-| tdxf10_gg_rdtc|zttzbkz | ✅ |  | 203ms |
-| tdxf10_gg_rdtc|zttzztk | ✅ |  | 91ms |
-| tdxf10_gg_sj|fh_sj | ❌ ERR | 参数错误(-1005) | 94ms |
-| tdxf10_gg_sj|qhgp | ❌ ERR | 参数错误(-1005) | 97ms |
-| tdxf10_gg_ybpj|yjyg | ✅ |  | 0ms |
-| tdxf10_gg_ybpj|yzyq | ✅ |  | 90ms |
-| tdxf10_gg_zlcc|bszj | ✅ |  | 95ms |
-| tdxf10_gg_zxts|gsgy | ✅ |  | 85ms |
+| tdxf10_gg_comreq|jglhb | ✅ | 接口可达但空数据(0行) | 117ms |
+| tdxf10_gg_fhrz_fh|fh | ❌ ERR | 未注册(E|-7202) | 106ms |
+| tdxf10_gg_fhrz|fhlszs_gxl | ✅ |  | 204ms |
+| tdxf10_gg_fhrz|fhpm_pxrzb | ✅ |  | 118ms |
+| tdxf10_gg_fhrz|pxmz | ✅ |  | 88ms |
+| tdxf10_gg_gbjg|gbjg | ✅ |  | 110ms |
+| tdxf10_gg_gbjg|xslt | ✅ |  | 101ms |
+| tdxf10_gg_gdyjcgmx|gdjc | ❌ ERR | 业务错误(ErrorCode=-1005) | 108ms |
+| tdxf10_gg_gdyjcgmx|gdjcmxrq | ❌ ERR | 业务错误(ErrorCode=-1005) | 93ms |
+| tdxf10_gg_gdyj|cgbd | ✅ |  | 104ms |
+| tdxf10_gg_gdyj|gdrs | ✅ |  | 88ms |
+| tdxf10_gg_gdyj|jgcg | ✅ |  | 128ms |
+| tdxf10_gg_gdyj|jgcgqk | ✅ |  | 124ms |
+| tdxf10_gg_gdyj|ltgd | ✅ |  | 131ms |
+| tdxf10_gg_gsgk|0 | ✅ |  | 90ms |
+| tdxf10_gg_gsgk|20 | ✅ |  | 107ms |
+| tdxf10_gg_gsgk|4 | ✅ |  | 86ms |
+| tdxf10_gg_gsgk|5 | ✅ |  | 111ms |
+| tdxf10_gg_iyds|yxsbxx | ❌ ERR | 未注册(E|-7202) | 87ms |
+| tdxf10_gg_jyds|dzjy | ✅ |  | 111ms |
+| tdxf10_gg_jyds|rzrq | ✅ |  | 105ms |
+| tdxf10_gg_jyds|zjlx | ✅ |  | 84ms |
+| tdxf10_gg_jyds|ztfx | ✅ | 接口可达但空数据(0行) | 81ms |
+| tdxf10_gg_rdtc|sjcd | ✅ |  | 112ms |
+| tdxf10_gg_rdtc|zttzbkz | ✅ |  | 88ms |
+| tdxf10_gg_rdtc|zttzztk | ✅ |  | 101ms |
+| tdxf10_gg_sj|fh_sj | ❌ ERR | 业务错误(ErrorCode=-1005) | 91ms |
+| tdxf10_gg_sj|qhgp | ❌ ERR | 业务错误(ErrorCode=-1005) | 146ms |
+| tdxf10_gg_ybpj|yjyg | ✅ |  | 106ms |
+| tdxf10_gg_ybpj|yzyq | ✅ |  | 91ms |
+| tdxf10_gg_zlcc|bszj | ✅ |  | 113ms |
+| tdxf10_gg_zxts|gsgy | ✅ |  | 91ms |
 
 ## 3. 技能可用性
 
@@ -87,7 +87,7 @@
 | tdx-quant | 未知(无可测依赖) |  |  |
 | tdx-report-rating | ✅可用 | tdx_api_data | tdxf10_gg_ybpj |
 | tdx-share-capital | ✅可用 | tdx_api_data | tdxf10_gg_gbjg |
-| tdx-shareholder-research | 🟡部分 | tdx_api_data | tdxf10_gg_gdyj |
+| tdx-shareholder-research | ✅可用 | tdx_api_data | tdxf10_gg_gdyj |
 | tdx-stock-events | ✅可用 | tdx_api_data | tdxf10_gg_gdyj, tdxf10_gg_jyds, tdxf10_gg_gdyj_jgcgmx |
 | tdx-tczqcxx | ✅可用 | tdx_api_data, tdx_quotes, tdx_kline, tdx_lookup_stock, tdx_screener | tdxf10_gg_rdtc, tdxf10_gg_ybpj, tdxf10_gg_jyds |
 | tdx-trade-plan | ✅可用 | tdx_api_data, tdx_quotes, tdx_kline, tdx_indicator_select | tdxf10_gg_rdtc, tdxf10_gg_ybpj |

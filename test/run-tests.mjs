@@ -39,13 +39,29 @@ const ERR_MARKERS = [
   { re: /E\|-7201/, tag: "未注册(E|-7201)" },
   { re: /E\|-7202/, tag: "未注册(E|-7202)" },
   { re: /-1005/, tag: "参数错误(-1005)" },
-  { re: /need login|401/i, tag: "需登录(401)" },
+  // 401 需数字边界：数据载荷中的浮点数（如 4.814011）或整数（如 4018）不能误判为 401 错误
+  { re: /need\s*login|(?<![\d.])401(?![\d.])/i, tag: "需登录(401)" },
   { re: /S1404\d/, tag: "服务错误(S1404x)" },
   { re: /\b503\b/, tag: "服务不可用(503)" },
   { re: /"ErrorId"\s*:\s*"?(?!0)/, tag: "ErrorId!=0" },
 ];
 function classify(text) {
   if (!text) return { status: "EMPTY", note: "空响应" };
+  // 结构化响应（tdx_api_data 返回 JSON 明细）
+  if (/"ok"\s*:/.test(text)) {
+    // 传输层失败：HTTP 非 200（503/401 等），插件置 ok:false
+    if (/"ok"\s*:\s*false/.test(text) || /请求失败/.test(text)) {
+      for (const m of ERR_MARKERS) if (m.re.test(text)) return { status: "ERR", note: m.tag };
+      return { status: "ERR", note: "HTTP错误(ok:false)" };
+    }
+    // 业务层失败：HTTP 200 但 data 带 ErrorCode（如 -1005 数据库执行失败）
+    const be = text.match(/"ErrorCode"\s*:\s*(-?\d+)/);
+    if (be && be[1] !== "0") return { status: "ERR", note: `业务错误(ErrorCode=${be[1]})` };
+    // 成功载荷中的零散 "401"/"need login" 字样属于数据噪声，不算失败
+    if (/-\s*0 rows/.test(text)) return { status: "OK", note: "接口可达但空数据(0行)" };
+    return { status: "OK", note: "" };
+  }
+  // 非结构化文本（行情/K线等摘要）：用带数字边界的强错误标记
   for (const m of ERR_MARKERS) if (m.re.test(text)) return { status: "ERR", note: m.tag };
   return { status: "OK", note: "" };
 }

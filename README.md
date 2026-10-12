@@ -31,6 +31,11 @@ v3 是在 v2 基础上的**清理与精简版本**，主要变更（详见 [CHAN
 - 删除了仓库内的调试 / 抓取 Cookie / 重复扫描脚本，只保留可发布的插件资产。
 - 统一了版本号、仓库地址与技能数量等元数据。
 
+### 近期变更（v3.3.x）
+
+- **v3.3.1**：移除一进二打板技能（`tdx-daban-yijinerb-PS-SKILL`），技能总数 46 → 45。
+- **v3.3.0**：`tdx_api_data` 注册表接入 `ybpj|yjyg`（业绩预告，服务端当前返回空表、原始透传）；修复 `tdx_quotes` 摘要涨跌幅 NaN；修正测试分类器对数据数字的 401 误判（详见 [CHANGELOG.md](./CHANGELOG.md)）。
+
 > 现在工具层、清单（`openclaw.plugin.json`）与文档三者完全一致：**6 个工具，全部可用**。
 
 ### 一包包含：工具 + 技能
@@ -65,28 +70,27 @@ tdx-finance-mcp-plugin-v3/
 
 ## 工具列表
 
-> 🟢 = 完全可用（基础 Token） | 🟡 = 部分 F10 模块需开通更高权限
+> 🟢 = 完全可用。F10 个别子模块服务端未注册（`E|-7202`），与 Token 权限无关（详见下方实测结果）。
 
 | # | 工具名称 | 功能描述 | 服务器 | Entry | 状态 |
 |---|---------|---------|--------|-------|------|
-| 1 | **tdx_api_data** | 统一 F10 内部 API 调用（含盈利预测、热点题材、事件驱动等子模块） | 服务器1 | `TdxSharePCCW.*` | 🟢 / 🟡 |
+| 1 | **tdx_api_data** | 统一 F10 内部 API 调用（含盈利预测、热点题材、事件驱动等子模块） | 服务器1 | `TdxSharePCCW.*` | 🟢 |
 | 2 | **tdx_quotes** | 实时行情查询（报价、五档盘口、涨跌幅等） | 服务器1 | `TdxShare.PBHQInfo` | 🟢 |
 | 3 | **tdx_kline** | K线历史数据查询（多周期、含复权） | 服务器1 | `TdxShare.PBFXT` | 🟢 |
 | 4 | **tdx_lookup_stock** | 股票/指数/基金代码 RAG 检索 | 服务器2 | AI RAG | 🟢 |
 | 5 | **tdx_screener** | 自然语言智能选股 | 服务器1 | `JNLPSE:wendaQuery` | 🟢 |
 | 6 | **tdx_indicator_select** | 金融指标选择与查询 | 服务器1 | `NLPSE:InfoSelectV2` | 🟢 |
 
-### 实测结果（2026-06-20，标的 000001）
+### 实测结果（2026-10-12，标的 000001；另有 11 只跨市场样本交叉验证）
 
 > 通过 `test/run-tests.mjs` 驱动真实插件代码实测。完整报告见 [test/test-report.md](./test/test-report.md)。
 
-- **6 个核心工具：全部可用 ✅**（行情 ~134ms、K线 ~79ms、代码检索 ~233ms、选股 ~225ms、指标 ~1140ms、F10 ~84ms）。
-- **F10 子模块：大部分可用。** 已验证可用的包括：公司概况 `gsgk`、公司概要 `zxts/gsgy`、盈利预测/预告 `ybpj/yzyq·yjyg`、事件与题材 `rdtc/sjcd·zttzbkz`、龙虎榜涨停/大宗/资金流 `jyds/ztfx·dzjy·zjlx`、机构与流通股东 `gdyj/cgbd·jgcg·ltgd`、股本结构 `gbjg`、主力持仓 `zlcc`、综合 `comreq` 等。
-- **需更高权限的子模块（基础 Token 下不可用）：**
-  - `401 需登录`：股东人数 `gdyj/gdrs`、分红历史 `fhrz/fhlszs_gxl`、融资融券 `jyds/rzrq`
-  - `E|-7202 未注册`：`fhrz_fh/fh`、异动 `iyds/yxsbxx`
-
-  如需这些数据，请联系通达信升级 Token 权限。依赖它们的 6 个技能（分红融资、龙虎榜、股东研究、交易信息、龙虎榜席位风格、涨停龙头）会在主数据可用的前提下自动降级（跳过受限子表）。
+- **6 个核心工具：全部可用 ✅**（行情 ~190ms、K线 ~87ms、代码检索 ~189ms、选股 ~216ms、指标 ~1.2s、F10 ~120ms）。
+- **F10 子模块：除 2 个服务端未注册模块外全部可用。** 已验证可用：公司概况 `gsgk`、公司概要 `zxts/gsgy`、盈利预测 `ybpj/yzyq`、业绩预告 `ybpj/yjyg`（服务端当前返回空表，原始透传）、事件与题材 `rdtc/sjcd·zttzbkz·zttzztk`、龙虎榜涨停/大宗/融资融券/资金流 `jyds/ztfx·dzjy·rzrq·zjlx`、股东研究 `gdyj/gdrs·cgbd·jgcg·jgcgqk·ltgd`、股本结构 `gbjg/xslt`、主力持仓 `zlcc`、分红 `fhrz/fhpm_pxrzb·pxmz`、综合 `comreq/jglhb`。
+- **不可用子模块（服务端未注册，与 Token 权限无关）：** `fhrz_fh/fh`、异动 `iyds/yxsbxx`（`E|-7202` / HTTP 503）。另有 4 个非标准 fixedTag 组合返回 `-1005 数据库执行失败`（探测噪声，不代表 entry 不可达）。
+- **「无数据」的表现形式是 0 行空结果集**（如北交所贝特瑞 835185 的资金流向），而非错误。
+- **⚠️ 历史勘误（v3.2.7 及更早报告）**：此前记载的 `401 需登录` 子模块（股东人数/分红历史/融资融券/资金流向等）为测试分类器把数据数字（如 `4.814011`、`4018`）误判为 401 的伪影，v3.3.0 已修复分类器——上述子模块实际全部可用，无需升级 Token 权限。
+- **技能层：45 个技能 42 ✅ 可用 / 2 🟡 部分 / 0 ❌ 不可用**。测试框架（`test/run-tests.mjs`）动态枚举 `skills/` 目录，按各技能声明的数据依赖逐项验证；「部分可用」指个别依赖子模块未注册时自动降级。
 
 ---
 
@@ -187,6 +191,8 @@ openclaw start
 ```json
 // 盈利预测
 { "entry": "TdxSharePCCW.tdxf10_gg_ybpj", "code": "000001", "fixedTag": "yzyq" }
+// 业绩预告（服务端当前返回空表，原始透传）
+{ "entry": "TdxSharePCCW.tdxf10_gg_ybpj", "code": "000001", "fixedTag": "yjyg" }
 // 热点题材板块族谱
 { "entry": "TdxSharePCCW.tdxf10_gg_rdtc", "code": "000001", "fixedTag": "zttzbkz" }
 // 事件驱动催化
@@ -310,4 +316,4 @@ Token 来源优先级：插件配置 `tdxApiToken` → 环境变量 `TDX_API_KEY
 
 ---
 
-<p align="center">Made with ❤️ by TDX Team · v3.0.0</p>
+<p align="center">Made with ❤️ by TDX Team · v3.3.1</p>

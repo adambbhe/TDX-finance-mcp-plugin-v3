@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20T07:31:27.483Z",
+  "generatedAt": "2026-10-12T03:24:39.738Z",
   "token": "TDX-971f51…",
   "testCode": "000001",
   "tools": {
@@ -7,269 +7,269 @@
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 206,
-      "sample": "【平安银行】000001 | 现价: 10.52 (-2.41%) | 成交量: 143万手 | 换手率: 0.735299528% 详细信息: { \"HQInfo\": { \"HQDate\": \"20260618\", \"HQTime\": \"153306\", \"ItemNum\": \"4642\", \"Close\": 10."
+      "ms": 219,
+      "sample": "【平安银行】000001 | 现价: 11.78 | +1.64% (+0.19) | 今开: 11.62 | 昨收: 11.59 | 均价: 11.75 | 成交量: 71万手 | 成交额: 8.30亿 | 换手率: 0.36% | 量比: 1.47 | 委比: -0.64% | 内盘 34万手 / 外盘 37万手 "
     },
     "tdx_kline": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 95,
-      "sample": "【平安银行】000001 | 现价: 10.52 (-2.41%) | 换手率: 0.735299528% | K线数量: 5根 | 区间涨跌: +6.84% | 区间最高: 11.25, 最低: 10.52 详细K线数据: { \"Code\": \"000001\", \"Period\": 4, \"ListHead\": { "
+      "ms": 92,
+      "sample": "【平安银行】000001 | 现价: 11.78 (+1.64%) | 换手率: 0.364052594% | K线数量: 5根 | 区间涨跌: -3.65% | 区间最高: 11.89, 最低: 11.28 详细K线数据: { \"Code\": \"000001\", \"Period\": 4, \"ListHead\": { "
     },
     "tdx_lookup_stock": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 264,
+      "ms": 211,
       "sample": "找到 10 个与\"平安银行\"相关的A股: 1. 【000001】平安银行 类型: A股代码 | setcode: 0 别名: payh, 深发展A, S深发展A, 平安保险, 中国平安... 2. 【601318】中国平安 类型: A股代码 | setcode: 1 别名: zgpa, 平安保险, 平安股份, 平安集团"
     },
     "tdx_screener": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 211,
-      "sample": "## 查询\"涨停\"在A股市场中共找到 101 条记录，当前第 1 页，显示 5 条 | 序号 | 代码 | 名称 | 现价 | 涨跌幅 | |------|------|------|------|--------| | 1 | 002167 | 东方锆业 | 16.13 | 10.03% | | 2 | 002281"
+      "ms": 225,
+      "sample": "## 查询\"涨停\"在A股市场中共找到 37 条记录，当前第 1 页，显示 5 条 | 序号 | 代码 | 名称 | 现价 | 涨跌幅 | |------|------|------|------|--------| | 1 | 600825 | 新华传媒 | 13.78 | 9.98% | | 2 | 002531 |"
     },
     "tdx_indicator_select": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 1186,
-      "sample": "[ { \"market\": 0, \"code\": \"000001\", \"sec_name\": \"平安银行\", \"市盈率(PE,LYR)(交易日:20260618)\": \"4.7886\" } ]"
+      "ms": 1259,
+      "sample": "[ { \"market\": 0, \"code\": \"000001\", \"sec_name\": \"平安银行\", \"市盈率(PE,LYR)(交易日:20261012)\": \"5.3621\" } ]"
     },
     "tdx_api_data": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 91,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=88ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", \""
+      "ms": 124,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=121ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", "
     }
   },
   "f10": {
     "tdxf10_gg_comreq|jglhb": {
       "ok": true,
       "status": "OK",
-      "note": "",
-      "ms": 80,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code | entry=TdxSharePCCW.tdxf10_gg_comreq | status=200 | elapsed=80ms 转换摘要: 000001 dragon-tiger available dates - 0 rows, 1 "
+      "note": "接口可达但空数据(0行)",
+      "ms": 117,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code | entry=TdxSharePCCW.tdxf10_gg_comreq | status=200 | elapsed=115ms 转换摘要: 000001 dragon-tiger available dates - 0 rows, 1"
     },
     "tdxf10_gg_fhrz_fh|fh": {
       "ok": false,
       "status": "ERR",
       "note": "未注册(E|-7202)",
-      "ms": 83,
+      "ms": 106,
       "sample": "tdx_api_data 请求失败 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_fhrz_fh | HTTP 503 Service unavailable { \"ok\": false, \"toolName\": \"tdx_api_data\", \""
     },
     "tdxf10_gg_fhrz|fhlszs_gxl": {
-      "ok": false,
-      "status": "ERR",
-      "note": "需登录(401)",
-      "ms": 210,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=199ms 转换摘要: 最新日期 2026-06-18 | 历史记录 2428 条 { \"ok\": true, \"tool"
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 204,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=191ms 转换摘要: 最新日期 2026-10-09 | 历史记录 2427 条 { \"ok\": true, \"tool"
     },
     "tdxf10_gg_fhrz|fhpm_pxrzb": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 86,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=85ms 转换摘要: 排名记录 10 条 { \"ok\": true, \"toolName\": \"tdx_api_data\""
+      "ms": 118,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=117ms 转换摘要: 排名记录 10 条 { \"ok\": true, \"toolName\": \"tdx_api_data"
     },
     "tdxf10_gg_fhrz|pxmz": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 92,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=92ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode\": \"code-"
+      "ms": 88,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_fhrz | status=200 | elapsed=88ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode\": \"code-"
     },
     "tdxf10_gg_gbjg|gbjg": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 95,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=94ms 转换摘要: 000001 股本构成 - 最新变动日期 2026-06-20，18 条记录 { \"ok\": tru"
+      "ms": 110,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=109ms 转换摘要: 000001 股本构成 - 最新变动日期 2026-10-12，18 条记录 { \"ok\": tr"
     },
     "tdxf10_gg_gbjg|xslt": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 85,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=84ms 转换摘要: 000001 限售解禁 - 最近解禁日 2018-05-21，参考日期 2026-06-12，1 条"
+      "ms": 101,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_gbjg | status=200 | elapsed=99ms 转换摘要: 000001 限售解禁 - 最近解禁日 2018-05-21，参考日期 2026-09-24，1 条"
     },
     "tdxf10_gg_gdyjcgmx|gdjc": {
       "ok": false,
       "status": "ERR",
-      "note": "参数错误(-1005)",
-      "ms": 126,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=126ms { \"ok\": true, \"toolName\": \"tdx_api_dat"
+      "note": "业务错误(ErrorCode=-1005)",
+      "ms": 108,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=108ms { \"ok\": true, \"toolName\": \"tdx_api_dat"
     },
     "tdxf10_gg_gdyjcgmx|gdjcmxrq": {
       "ok": false,
       "status": "ERR",
-      "note": "参数错误(-1005)",
+      "note": "业务错误(ErrorCode=-1005)",
       "ms": 93,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=93ms { \"ok\": true, \"toolName\": \"tdx_api_data"
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-three-extras | entry=TdxSharePCCW.tdxf10_gg_gdyjcgmx | status=200 | elapsed=92ms { \"ok\": true, \"toolName\": \"tdx_api_data"
     },
     "tdxf10_gg_gdyj|cgbd": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 89,
-      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=88ms 转换摘要: 000001 shareholder change { \"ok\": true, \"too"
+      "ms": 104,
+      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=103ms 转换摘要: 000001 shareholder change { \"ok\": true, \"to"
     },
     "tdxf10_gg_gdyj|gdrs": {
-      "ok": false,
-      "status": "ERR",
-      "note": "需登录(401)",
-      "ms": 97,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=96ms 转换摘要: 000001 股东人数与股价比较 - 截止 2026-03-3"
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 88,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=86ms 转换摘要: 000001 股东人数与股价比较 - 截止 2026-06-3"
     },
     "tdxf10_gg_gdyj|jgcg": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 90,
-      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=89ms 转换摘要: 000001 机构持股汇总 - 最新报告期 2026-03-31，机构家数 95，持仓比"
+      "ms": 128,
+      "sample": "tdx_api_data 请求成功 | mode=code-date-range-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=127ms 转换摘要: 000001 机构持股汇总 - 最新报告期 2026-06-30，机构家数 718，持"
     },
     "tdxf10_gg_gdyj|jgcgqk": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 78,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=77ms 转换摘要: 000001 机构持股整体 - 1 类机构 { \"ok\": t"
+      "ms": 124,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=124ms 转换摘要: 000001 机构持股整体 - 1 类机构 { \"ok\": "
     },
     "tdxf10_gg_gdyj|ltgd": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 169,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=164ms 转换摘要: 000001 十大流通股东 - 最新变动日 2025-12-"
+      "ms": 131,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-report-cursor-page | entry=TdxSharePCCW.tdxf10_gg_gdyj | status=200 | elapsed=124ms 转换摘要: 000001 十大流通股东 - 最新变动日 2026-06-"
     },
     "tdxf10_gg_gsgk|0": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 95,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=94ms 转换摘要: 平安银行股份有限公司 (000001) basic info - 3 business "
+      "ms": 90,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=89ms 转换摘要: 平安银行股份有限公司 (000001) basic info - 3 business "
     },
     "tdxf10_gg_gsgk|20": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 99,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=98ms 转换摘要: 000001 executives - 20 people, 2 category su"
+      "ms": 107,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=105ms 转换摘要: 000001 executives - 20 people, 2 category s"
     },
     "tdxf10_gg_gsgk|4": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 88,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=88ms 转换摘要: 000001 员工构成 - 共 14 条记录 { \"ok\": true, \"toolNa"
+      "ms": 86,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=86ms 转换摘要: 000001 员工构成 - 共 14 条记录 { \"ok\": true, \"toolNa"
     },
     "tdxf10_gg_gsgk|5": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 103,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=102ms 转换摘要: 000001 员工效益 - 共 5 个年度 { \"ok\": true, \"toolNa"
+      "ms": 111,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-extra | entry=TdxSharePCCW.tdxf10_gg_gsgk | status=200 | elapsed=111ms 转换摘要: 000001 员工效益 - 共 5 个年度 { \"ok\": true, \"toolNa"
     },
     "tdxf10_gg_iyds|yxsbxx": {
       "ok": false,
       "status": "ERR",
       "note": "未注册(E|-7202)",
-      "ms": 116,
+      "ms": 87,
       "sample": "tdx_api_data 请求失败 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_iyds | HTTP 503 Service unavailable { \"ok\": false, \"toolName\": \"tdx_api_data\", \"mod"
     },
     "tdxf10_gg_jyds|dzjy": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 90,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=89ms 转换摘要: 000001 block trade | latest 2026-01-07 | 12 "
+      "ms": 111,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=110ms 转换摘要: 000001 block trade | latest 2026-07-09 | 11"
     },
     "tdxf10_gg_jyds|rzrq": {
-      "ok": false,
-      "status": "ERR",
-      "note": "需登录(401)",
-      "ms": 89,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=88ms 转换摘要: 000001 margin trading - 28 rows, 3 result se"
+      "ok": true,
+      "status": "OK",
+      "note": "",
+      "ms": 105,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=104ms 转换摘要: 000001 margin trading - 21 rows, 3 result s"
     },
     "tdxf10_gg_jyds|zjlx": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 95,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=94ms 转换摘要: 000001 capital flow - 49 rows, 2 result sets"
+      "ms": 84,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=83ms 转换摘要: 000001 capital flow - 50 rows, 2 result sets"
     },
     "tdxf10_gg_jyds|ztfx": {
       "ok": true,
       "status": "OK",
-      "note": "",
-      "ms": 87,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=87ms 转换摘要: 000001 limit-up analysis - 1 rows, 1 result "
+      "note": "接口可达但空数据(0行)",
+      "ms": 81,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_jyds | status=200 | elapsed=81ms 转换摘要: 000001 limit-up analysis - 0 rows, 1 result "
     },
     "tdxf10_gg_rdtc|sjcd": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 93,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=92ms 转换摘要: 事件 5 条 | 首个事件 商业银行75%存贷比取消 { \"ok\": true, \"toolName"
+      "ms": 112,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=112ms 转换摘要: 事件 5 条 | 首个事件 商业银行75%存贷比取消 { \"ok\": true, \"toolNam"
     },
     "tdxf10_gg_rdtc|zttzbkz": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 203,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=203ms 转换摘要: 板块 12 条 | 首个板块 跨境支付CIPS { \"ok\": true, \"toolName\":"
+      "ms": 88,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=87ms 转换摘要: 板块 10 条 | 首个板块 跨境支付CIPS { \"ok\": true, \"toolName\": "
     },
     "tdxf10_gg_rdtc|zttzztk": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 91,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=91ms 转换摘要: 题材 8 条 | 首个题材 平安保险持股 { \"ok\": true, \"toolName\": \"td"
+      "ms": 101,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_rdtc | status=200 | elapsed=100ms 转换摘要: 题材 8 条 | 首个题材 平安保险持股 { \"ok\": true, \"toolName\": \"t"
     },
     "tdxf10_gg_sj|fh_sj": {
       "ok": false,
       "status": "ERR",
-      "note": "参数错误(-1005)",
-      "ms": 94,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=93ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode"
+      "note": "业务错误(ErrorCode=-1005)",
+      "ms": 91,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=91ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode"
     },
     "tdxf10_gg_sj|qhgp": {
       "ok": false,
       "status": "ERR",
-      "note": "参数错误(-1005)",
-      "ms": 97,
-      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=97ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode"
+      "note": "业务错误(ErrorCode=-1005)",
+      "ms": 146,
+      "sample": "tdx_api_data 请求成功 | mode=fixed-tag-code-two-extras | entry=TdxSharePCCW.tdxf10_gg_sj | status=200 | elapsed=146ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mod"
     },
     "tdxf10_gg_ybpj|yjyg": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 0,
-      "sample": "{ \"ok\": false, \"toolName\": \"tdx_api_data\", \"mode\": \"auto\", \"error\": { \"kind\": \"validation\", \"message\": \"entry TdxSharePCCW.tdxf10_gg_ybpj 未命中自动推导规则；可用判别参数：fixed"
+      "ms": 106,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=106ms { \"ok\": true, \"toolName\": \"tdx_api_data\", \"mode\": \"code"
     },
     "tdxf10_gg_ybpj|yzyq": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 90,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=90ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", \""
+      "ms": 91,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag | entry=TdxSharePCCW.tdxf10_gg_ybpj | status=200 | elapsed=91ms 转换摘要: 研报 1 条 { \"ok\": true, \"toolName\": \"tdx_api_data\", \""
     },
     "tdxf10_gg_zlcc|bszj": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 95,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-date-three-extras | entry=TdxSharePCCW.tdxf10_gg_zlcc | status=200 | elapsed=94ms 转换摘要: 000001 北向资金 - 日期 2026-03-31，持股数量"
+      "ms": 113,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-date-three-extras | entry=TdxSharePCCW.tdxf10_gg_zlcc | status=200 | elapsed=112ms 转换摘要: 000001 北向资金 - 日期 2026-06-30，持股数"
     },
     "tdxf10_gg_zxts|gsgy": {
       "ok": true,
       "status": "OK",
       "note": "",
-      "ms": 85,
-      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_zxts | status=200 | elapsed=84ms 转换摘要: 平安银行 (000001) 公司概要 - 2026-03-31 - 行业 银行 / 全国"
+      "ms": 91,
+      "sample": "tdx_api_data 请求成功 | mode=code-fixed-tag-extra | entry=TdxSharePCCW.tdxf10_gg_zxts | status=200 | elapsed=90ms 转换摘要: 平安银行 (000001) 公司概要 - 2026-06-30 - 行业 银行 / 全国"
     }
   },
   "skills": {
@@ -579,7 +579,7 @@
       ]
     },
     "tdx-shareholder-research": {
-      "verdict": "🟡部分",
+      "verdict": "✅可用",
       "tools": [
         "tdx_api_data"
       ],
@@ -747,10 +747,10 @@
   "summary": {
     "toolsOk": 6,
     "toolsTotal": 6,
-    "f10Ok": 23,
+    "f10Ok": 26,
     "f10Total": 32,
-    "skillsAvail": 41,
-    "skillsPartial": 3,
+    "skillsAvail": 42,
+    "skillsPartial": 2,
     "skillsDown": 0
   }
 }

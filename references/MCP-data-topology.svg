@@ -1,0 +1,128 @@
+<svg viewBox="0 0 1020 620" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Microsoft YaHei','PingFang SC','Segoe UI',sans-serif">
+  <title>TDX Finance MCP 数据拓扑图</title>
+  <desc>Agent 经 MCP 插件 tdx-finance-mcp 的 6 个工具，连接 2 台服务器：主数据服务 tdxhub.icfqs.com:7615/TQLEX 承载 quotes/kline/screener/indicator_select/api_data，其中 api_data 覆盖 7 类共 72 条 F10 路由；RAG 服务 ai.icfqs.com:8965 承载 lookup_stock。</desc>
+  <style>
+    .lbl{fill:var(--text-primary,#26215C);}
+    .sub{fill:var(--text-secondary,#5F5E5A);}
+    .mut{fill:var(--text-muted,#888780);}
+    .wht{fill:#ffffff;}
+    text{font-family:'Microsoft YaHei','PingFang SC','Segoe UI',sans-serif;}
+    .edge{stroke:var(--border-strong,#B4B2A9);stroke-width:1.6;fill:none;}
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--border-strong,#888780)"/>
+    </marker>
+  </defs>
+
+  <!-- Client -->
+  <rect x="360" y="16" width="300" height="50" rx="10" fill="var(--surface-1,#F1EFE8)" stroke="var(--border,#D3D1C7)"/>
+  <text x="510" y="38" text-anchor="middle" font-size="15" font-weight="700" class="lbl">Agent / OpenClaw</text>
+  <text x="510" y="56" text-anchor="middle" font-size="11.5" class="sub">45 个投资分析技能</text>
+
+  <!-- Plugin -->
+  <rect x="300" y="98" width="420" height="56" rx="12" fill="#534AB7" stroke="#3C3489"/>
+  <text x="510" y="122" text-anchor="middle" font-size="15" font-weight="700" class="wht">MCP 插件 · tdx-finance-mcp　v3.3.1</text>
+  <text x="510" y="142" text-anchor="middle" font-size="11.5" fill="#CECBF6">6 工具　·　鉴权 header token</text>
+
+  <path class="edge" d="M510,66 L510,98" marker-end="url(#arw)"/>
+  <path class="edge" d="M420,154 L300,196" marker-end="url(#arw)"/>
+  <path class="edge" d="M660,154 L812,196" marker-end="url(#arw)"/>
+
+  <!-- ===== S1 server group ===== -->
+  <rect x="34" y="198" width="700" height="404" rx="12" fill="var(--surface-0,#FbFbFa)" stroke="#378ADD" stroke-width="2"/>
+  <rect x="34" y="198" width="700" height="42" rx="12" fill="#185FA5"/>
+  <rect x="34" y="222" width="700" height="18" fill="#185FA5"/>
+  <text x="52" y="216" font-size="13.5" font-weight="700" class="wht">S1 · TDX 主数据服务</text>
+  <text x="52" y="233" font-size="11.5" fill="#B5D4F4">http://tdxhub.icfqs.com:7615/TQLEX　·　Entry 走 URL Query</text>
+
+  <!-- 4 simple tools -->
+  <g font-size="12">
+    <rect x="52" y="256" width="158" height="60" rx="9" fill="var(--surface-1,#E6F1FB)" stroke="#85B7EB"/>
+    <text x="131" y="280" text-anchor="middle" font-weight="700" class="lbl">tdx_quotes</text>
+    <text x="131" y="298" text-anchor="middle" font-size="10.5" class="sub">实时行情快照</text>
+    <text x="131" y="311" text-anchor="middle" font-size="9.5" class="mut">TdxShare.PBHQInfo</text>
+
+    <rect x="222" y="256" width="158" height="60" rx="9" fill="var(--surface-1,#E6F1FB)" stroke="#85B7EB"/>
+    <text x="301" y="280" text-anchor="middle" font-weight="700" class="lbl">tdx_kline</text>
+    <text x="301" y="298" text-anchor="middle" font-size="10.5" class="sub">K线历史</text>
+    <text x="301" y="311" text-anchor="middle" font-size="9.5" class="mut">TdxShare.PBFXT</text>
+
+    <rect x="392" y="256" width="158" height="60" rx="9" fill="var(--surface-1,#E6F1FB)" stroke="#85B7EB"/>
+    <text x="471" y="280" text-anchor="middle" font-weight="700" class="lbl">tdx_screener</text>
+    <text x="471" y="298" text-anchor="middle" font-size="10.5" class="sub">自然语言选股</text>
+    <text x="471" y="311" text-anchor="middle" font-size="9.5" class="mut">JNLPSE:wendaQuery</text>
+
+    <rect x="562" y="256" width="158" height="60" rx="9" fill="var(--surface-1,#E6F1FB)" stroke="#85B7EB"/>
+    <text x="641" y="280" text-anchor="middle" font-weight="700" class="lbl">tdx_indicator_select</text>
+    <text x="641" y="298" text-anchor="middle" font-size="10.5" class="sub">指标条件选股</text>
+    <text x="641" y="311" text-anchor="middle" font-size="9.5" class="mut">NLPSE:InfoSelectV2</text>
+  </g>
+
+  <!-- api_data -->
+  <rect x="52" y="332" width="668" height="44" rx="9" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.6"/>
+  <text x="66" y="351" font-size="13" font-weight="700" class="lbl">tdx_api_data</text>
+  <text x="66" y="367" font-size="10.5" class="sub">F10 基本面统一网关　·　{Params:[…]}　·　29 个上游 entry　/　72 条数据路由</text>
+  <text x="706" y="359" text-anchor="end" font-size="10.5" class="mut">↓ 按分类展开</text>
+
+  <path class="edge" d="M386,376 L386,390" marker-end="url(#arw)"/>
+
+  <!-- F10 category chips -->
+  <g font-size="11.5">
+    <!-- row1 -->
+    <rect x="52"  y="392" width="160" height="46" rx="8" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="132" y="412" text-anchor="middle" font-weight="700" class="lbl">公司资料</text>
+    <text x="132" y="428" text-anchor="middle" font-size="10" class="sub">概要·基本·董监高 · 7</text>
+
+    <rect x="220" y="392" width="160" height="46" rx="8" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="300" y="412" text-anchor="middle" font-weight="700" class="lbl">股本股东</text>
+    <text x="300" y="428" text-anchor="middle" font-size="10" class="sub">十大股东·机构·增减持 · 17</text>
+
+    <rect x="388" y="392" width="160" height="46" rx="8" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="468" y="412" text-anchor="middle" font-weight="700" class="lbl">财务报表</text>
+    <text x="468" y="428" text-anchor="middle" font-size="10" class="sub">利润·现金流·负债 · 8</text>
+
+    <rect x="556" y="392" width="164" height="46" rx="8" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="638" y="412" text-anchor="middle" font-weight="700" class="lbl">估值研报</text>
+    <text x="638" y="428" text-anchor="middle" font-size="10" class="sub">一致预期·行业排名 · 4</text>
+
+    <!-- row2 -->
+    <rect x="52"  y="446" width="160" height="46" rx="8" fill="#FAECE7" stroke="#F0997B"/>
+    <text x="132" y="466" text-anchor="middle" font-weight="700" class="lbl">分红融资</text>
+    <text x="132" y="482" text-anchor="middle" font-size="10" class="sub">分红·配股·增发 · 13</text>
+
+    <rect x="220" y="446" width="160" height="46" rx="8" fill="#FAECE7" stroke="#F0997B"/>
+    <text x="300" y="466" text-anchor="middle" font-weight="700" class="lbl">交易资金</text>
+    <text x="300" y="482" text-anchor="middle" font-size="10" class="sub">龙虎榜·大宗·北向 · 10</text>
+
+    <rect x="388" y="446" width="332" height="46" rx="8" fill="#FAECE7" stroke="#F0997B"/>
+    <text x="554" y="466" text-anchor="middle" font-weight="700" class="lbl">题材行业板块</text>
+    <text x="554" y="482" text-anchor="middle" font-size="10" class="sub">热点题材·产业链·板块估值 · 13</text>
+  </g>
+  <text x="52" y="516" font-size="10.5" class="mut">判别参数：fixedTag / queryKey / branch / queryType　·　覆盖 full 54 · partial 18</text>
+  <text x="52" y="534" font-size="10.5" class="mut">连通性核验：node test/probe-f10.mjs</text>
+
+  <!-- ===== S2 server group ===== -->
+  <rect x="756" y="198" width="242" height="150" rx="12" fill="var(--surface-0,#FbFbFa)" stroke="#1D9E75" stroke-width="2"/>
+  <rect x="756" y="198" width="242" height="42" rx="12" fill="#0F6E56"/>
+  <rect x="756" y="222" width="242" height="18" fill="#0F6E56"/>
+  <text x="774" y="216" font-size="13.5" font-weight="700" class="wht">S2 · RAG 检索服务</text>
+  <text x="774" y="233" font-size="10.5" fill="#9FE1CB">https://ai.icfqs.com:8965</text>
+
+  <rect x="774" y="258" width="206" height="70" rx="9" fill="var(--surface-1,#E1F5EE)" stroke="#5DCAA5"/>
+  <text x="877" y="284" text-anchor="middle" font-size="12.5" font-weight="700" class="lbl">tdx_lookup_stock</text>
+  <text x="877" y="302" text-anchor="middle" font-size="10.5" class="sub">代码↔名称 语义检索</text>
+  <text x="877" y="317" text-anchor="middle" font-size="9.5" class="mut">/v1/rag-entity-retrieve</text>
+
+  <!-- legend -->
+  <g font-size="10.5">
+    <rect x="756" y="366" width="14" height="14" rx="3" fill="#185FA5"/>
+    <text x="776" y="377" class="sub">主数据服务(S1)</text>
+    <rect x="756" y="386" width="14" height="14" rx="3" fill="#0F6E56"/>
+    <text x="776" y="397" class="sub">RAG 检索服务(S2)</text>
+    <rect x="880" y="366" width="14" height="14" rx="3" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="900" y="377" class="sub">F10 行情面</text>
+    <rect x="880" y="386" width="14" height="14" rx="3" fill="#FAECE7" stroke="#F0997B"/>
+    <text x="900" y="397" class="sub">F10 资金/事件面</text>
+  </g>
+</svg>

@@ -5930,6 +5930,16 @@ const STRUCTURED_ROUTE_REGISTRY = [
 				code: "000001",
 				fixedTag: "yzyq"
 			}
+		}, {
+			// yjyg：服务端可达（ErrorCode=0）但当前恒返回空表，无法确认列结构，
+			// 故不挂 preset，原样透传 response.data；待确认列结构后再补转换预设
+			selectorValue: "yjyg",
+			description: "业绩预告（服务端当前返回空表，原始透传）",
+			example: {
+				entry: "TdxSharePCCW.tdxf10_gg_ybpj",
+				code: "000001",
+				fixedTag: "yjyg"
+			}
 		}]
 	}),
 	buildFixedValueEntry({
@@ -7385,7 +7395,7 @@ function formatQuotesResult(data, logger) {
 
 	// 价格与涨跌
 	const now = hqInfo.Now;
-	const close = hqInfo.Close ?? calcInfo?.CAZAF ? (hqInfo.Now / (1 + Number(calcInfo.CAZAF) / 100)) : hqInfo.Close;
+	const close = hqInfo.Close ?? (calcInfo?.CAZAF != null ? (hqInfo.Now / (1 + Number(calcInfo.CAZAF) / 100)) : hqInfo.Close);
 	const change = calcInfo?.CAZAF ?? (close != null && now != null && Number(close) !== 0 ? (Number(now) - Number(close)) / Number(close) * 100 : null);
 	if (now != null) summary.push(`现价: ${Number(now).toFixed(2)}`);
 	if (change != null) {

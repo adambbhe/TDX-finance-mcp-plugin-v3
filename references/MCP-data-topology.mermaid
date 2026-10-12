@@ -1,0 +1,25 @@
+%% TDX Finance MCP 数据拓扑（源图，可在支持 Mermaid 的工具渲染）
+flowchart TD
+  A["Agent / OpenClaw<br/>45 技能"] --> P["MCP 插件 tdx-finance-mcp v3.3.1<br/>6 工具 · header token"]
+
+  P --> S1
+  P --> S2
+
+  subgraph S1["S1 · 主数据服务  tdxhub.icfqs.com:7615/TQLEX  (Entry 走 URL Query)"]
+    Q["tdx_quotes<br/>TdxShare.PBHQInfo · 实时行情"]
+    K["tdx_kline<br/>TdxShare.PBFXT · K线历史"]
+    SC["tdx_screener<br/>JNLPSE:wendaQuery · 自然语言选股"]
+    IN["tdx_indicator_select<br/>NLPSE:InfoSelectV2 · 指标选股"]
+    AD["tdx_api_data<br/>{Params:[…]} · 29 entry / 72 路由"]
+    AD --> C1["公司资料 ·7"]
+    AD --> C2["股本股东 ·17"]
+    AD --> C3["财务报表 ·8"]
+    AD --> C4["估值研报 ·4"]
+    AD --> C5["分红融资 ·13"]
+    AD --> C6["交易资金 ·10"]
+    AD --> C7["题材行业板块 ·13"]
+  end
+
+  subgraph S2["S2 · RAG 检索服务  ai.icfqs.com:8965"]
+    LK["tdx_lookup_stock<br/>/v1/rag-entity-retrieve · 代码检索"]
+  end
